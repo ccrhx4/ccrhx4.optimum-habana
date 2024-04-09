@@ -601,19 +601,38 @@ class GaudiGenerationMixin(GenerationMixin):
                 # only pad if bucket_size < -1. If we are bucketing (bucket_size > 0), then that is taken care in greedy_search()
                 if not is_greedy_or_beam_and_bucket:
                     # token_idx is the current index in the generation process, it is incremented each time a new token is generated
-                    token_idx = inputs_tensor.shape[-1]
+                    
+                    token_idx = inputs_tensor.shape[1]
+
                     model_kwargs["token_idx"] = torch.tensor(token_idx, device=inputs_tensor.device)
                     model_kwargs["token_idx_cpu"] = token_idx
+
                     if generation_config.max_new_tokens is None:
                         generation_config.max_new_tokens = generation_config.max_length - token_idx
-                    inputs_tensor = torch.nn.functional.pad(
-                        inputs_tensor, (0, generation_config.max_new_tokens), value=generation_config.pad_token_id
-                    )
+                    
+                    #print("input_tensor:", inputs_tensor.shape, generation_config.max_new_tokens)
+
+                    if len(inputs_tensor.shape) == 3:
+                        inputs_tensor = self.prepare_inputs_embeds_padding(
+                            inputs_tensor, generation_config.max_new_tokens, generation_config.pad_token_id
+                        )
+                        model_kwargs[model_input_name] = inputs_tensor
+                    else:
+                        inputs_tensor = torch.nn.functional.pad(
+                            inputs_tensor, (0, generation_config.max_new_tokens), value=generation_config.pad_token_id
+                        )
+                        #print("inputs tensor is id:", inputs_tensor.shape)
+                    
                     for other_inputs in ["attention_mask", "token_type_ids"]:
                         if model_kwargs.get(other_inputs) is not None:
-                            model_kwargs[other_inputs] = torch.nn.functional.pad(
-                                model_kwargs[other_inputs], (0, generation_config.max_new_tokens), value=0
-                            )
+                            if len(inputs_tensor.shape) == 3:
+                                model_kwargs[other_inputs] = torch.nn.functional.pad(
+                                    model_kwargs[other_inputs], (0, generation_config.max_new_tokens), value=0
+                                )
+                            else:
+                                model_kwargs[other_inputs] = torch.nn.functional.pad(
+                                    model_kwargs[other_inputs], (0, generation_config.max_new_tokens), value=0
+                                )
             else:
                 assert generation_config.bucket_size <= 0, "Untested path for bucket>0"
                 token_idx = 1
@@ -667,11 +686,13 @@ class GaudiGenerationMixin(GenerationMixin):
         else:
             input_ids = inputs_tensor if model_input_name == "input_ids" else model_kwargs.pop("input_ids")
 
+
         if streamer is not None:
             streamer.put(input_ids.cpu())
 
         # 6. Prepare `max_length` depending on other stopping criteria.
         input_ids_length = input_ids.shape[-1]
+
         has_default_max_length = kwargs.get("max_length") is None and generation_config.max_length is not None
         if generation_config.max_new_tokens is not None:
             if not has_default_max_length and generation_config.max_length is not None:
@@ -682,7 +703,10 @@ class GaudiGenerationMixin(GenerationMixin):
                     "(https://huggingface.co/docs/transformers/main/en/main_classes/text_generation)"
                 )
             if "token_idx" in model_kwargs:
-                generation_config.max_length = input_ids_length
+                if len(inputs_tensor.shape) == 3:
+                    generation_config.max_length = generation_config.max_new_tokens + input_ids_length
+                else:
+                    generation_config.max_length = input_ids_length
             else:
                 generation_config.max_length = generation_config.max_new_tokens + input_ids_length
         # otherwise the total length [inputs-embeds-len + new-tokens-len] will go beyond indicated `max_length`
@@ -705,9 +729,10 @@ class GaudiGenerationMixin(GenerationMixin):
                 )
             self._setup_cache(cache_cls, max_batch_size=batch_size, max_cache_len=generation_config.max_length)
 
+        #TODO: 
         self._validate_generated_length(
             generation_config,
-            model_kwargs["token_idx"].item() if "token_idx" in model_kwargs else input_ids_length,
+            input_ids_length,
             has_default_max_length,
         )
 
@@ -729,11 +754,12 @@ class GaudiGenerationMixin(GenerationMixin):
         model_kwargs["flash_attention_causal_mask"] = True if generation_config.flash_attention_causal_mask else False
 
         if not self.config.is_encoder_decoder:
-            calculated_max_length = input_ids.shape[-1]
+            calculated_max_length = inputs_tensor.shape[1]
+
             if not generation_config.static_shapes and generation_config.max_new_tokens is not None:
                 calculated_max_length = input_ids.shape[-1] + generation_config.max_new_tokens
             if generation_config.use_cache and generation_config.reuse_cache:
-                bs, _ = input_ids.shape
+                bs, _ = inputs_tensor.shape
                 if not is_greedy_or_beam_and_bucket:
                     unwrap_deepspeed_model(self).allocate_kv_cache(
                         bs * generation_config.num_beams, calculated_max_length, token_idx
@@ -1400,13 +1426,24 @@ class GaudiGenerationMixin(GenerationMixin):
         bucket_internal = model_kwargs.get("bucket_internal", None)
         reduce_recompile = model_kwargs.get("reduce_recompile", False)
 
-        prompt_len = input_ids.shape[-1]
+        #prompt_len = input_ids.shape[-1]
+        #if not bucket_internal:
+        #    if bucket_size >= 0:
+        #        inc = iter(incrementor(bucket_size, prompt_len))
+        #    if bucket_size > 0:
+        #        assert "position_ids" not in model_kwargs, "Untested path"
+        
+        batch_size, cur_len = input_ids.shape
+        if "inputs_embeds" in model_kwargs:
+            cur_len = model_kwargs["inputs_embeds"].shape[1]
+
         if not bucket_internal:
             if bucket_size >= 0:
-                inc = iter(incrementor(bucket_size, prompt_len))
+                #TODO: cur_len or token_idx ?
+                inc = iter(incrementor(bucket_size, cur_len))
             if bucket_size > 0:
                 assert "position_ids" not in model_kwargs, "Untested path"
-        cur_len = prompt_len
+
         token_idx = model_kwargs.get("token_idx", None)
         if token_idx is not None:
             # Update cur_len in case of static shapes
@@ -1498,9 +1535,14 @@ class GaudiGenerationMixin(GenerationMixin):
 
             # update generated ids, model inputs, and length for next step
             if token_idx is not None:
-                input_ids.index_copy_(
-                    1, token_idx, next_tokens.unsqueeze(-1) if next_tokens.dim() == 1 else next_tokens
-                )
+                #print("second token:", input_ids.shape)
+                if model_kwargs["attention_mask"] is not None and model_kwargs["attention_mask"].shape[1] > input_ids.shape[1]:
+                    input_ids = torch.cat([input_ids, next_tokens[:, None]], dim=-1)
+                    #print(input_ids)
+                else:
+                    input_ids.index_copy_(
+                        1, token_idx, next_tokens.unsqueeze(-1) if next_tokens.dim() == 1 else next_tokens
+                    )
             else:
                 input_ids = torch.cat([input_ids, next_tokens[:, None]], dim=-1)
             if streamer is not None:

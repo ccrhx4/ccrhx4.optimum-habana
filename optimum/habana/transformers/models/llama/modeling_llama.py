@@ -721,6 +721,8 @@ class GaudiLlamaModel(LlamaModel):
 
         if inputs_embeds is None:
             inputs_embeds = self.embed_tokens(input_ids)
+            #print(inputs_embeds)
+
         ignore_cache_position = True  # Ignoring cache position for HPU
         use_new_cache = False  # Ignoring new Cache path for HPU
         past_seen_tokens = 0
@@ -955,6 +957,14 @@ class GaudiLlamaForCausalLM(LlamaForCausalLM):
             attentions=outputs.attentions,
         )
 
+    def prepare_inputs_embeds_padding(self, inputs_embeds, max_new_tokens, padding_token_id):
+        padding_embed = self.model.embed_tokens(torch.tensor(padding_token_id))
+        padding = padding_embed.unsqueeze(0).repeat(max_new_tokens, 1)
+
+        padded_tensor = torch.hstack((inputs_embeds, torch.unsqueeze(padding, 0)))
+        
+        return padded_tensor
+
     def prepare_inputs_for_generation(
         self, input_ids, past_key_values=None, attention_mask=None, inputs_embeds=None, token_idx=None, **kwargs
     ):
@@ -963,7 +973,14 @@ class GaudiLlamaForCausalLM(LlamaForCausalLM):
         reuse_cache = kwargs.get("reuse_cache")
         if past_key_values is not None:
             if token_idx is not None:
-                input_ids = torch.index_select(input_ids, 1, token_idx - 1)
+                #print("second tokens", input_ids)
+                if attention_mask is not None and attention_mask.shape[1] > input_ids.shape[1]:
+                    length = input_ids.shape[1] - 1
+                    indices = torch.tensor(length)
+                    input_ids = torch.index_select(input_ids, 1, indices)
+                else:
+                    input_ids = torch.index_select(input_ids, 1, token_idx - 1)
+                #print("second tokens", input_ids)
             else:
                 if isinstance(past_key_values, Cache):
                     cache_length = past_key_values.get_seq_length()

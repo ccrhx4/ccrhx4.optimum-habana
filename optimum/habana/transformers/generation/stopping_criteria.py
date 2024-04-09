@@ -25,6 +25,11 @@ logger = logging.get_logger(__name__)
 def gaudi_MaxLengthCriteria_call(self, input_ids: torch.LongTensor, scores: torch.FloatTensor, **kwargs) -> bool:
     token_idx = kwargs.get("token_idx", None)
     if token_idx is not None:
+        # check input_ids is NULL
+        cur_len = input_ids.shape[-1]
+        if cur_len < token_idx:
+            return cur_len >= self.max_length
+
         return token_idx >= self.max_length
     else:
         cur_len = input_ids.shape[-1]
