@@ -973,14 +973,12 @@ class GaudiLlamaForCausalLM(LlamaForCausalLM):
         reuse_cache = kwargs.get("reuse_cache")
         if past_key_values is not None:
             if token_idx is not None:
-                #print("second tokens", input_ids)
                 if attention_mask is not None and attention_mask.shape[1] > input_ids.shape[1]:
                     length = input_ids.shape[1] - 1
                     indices = torch.tensor(length)
                     input_ids = torch.index_select(input_ids, 1, indices)
                 else:
                     input_ids = torch.index_select(input_ids, 1, token_idx - 1)
-                #print("second tokens", input_ids)
             else:
                 if isinstance(past_key_values, Cache):
                     cache_length = past_key_values.get_seq_length()

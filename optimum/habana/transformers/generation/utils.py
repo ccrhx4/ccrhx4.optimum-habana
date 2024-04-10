@@ -610,8 +610,6 @@ class GaudiGenerationMixin(GenerationMixin):
                     if generation_config.max_new_tokens is None:
                         generation_config.max_new_tokens = generation_config.max_length - token_idx
                     
-                    #print("input_tensor:", inputs_tensor.shape, generation_config.max_new_tokens)
-
                     if len(inputs_tensor.shape) == 3:
                         inputs_tensor = self.prepare_inputs_embeds_padding(
                             inputs_tensor, generation_config.max_new_tokens, generation_config.pad_token_id
@@ -621,7 +619,6 @@ class GaudiGenerationMixin(GenerationMixin):
                         inputs_tensor = torch.nn.functional.pad(
                             inputs_tensor, (0, generation_config.max_new_tokens), value=generation_config.pad_token_id
                         )
-                        #print("inputs tensor is id:", inputs_tensor.shape)
                     
                     for other_inputs in ["attention_mask", "token_type_ids"]:
                         if model_kwargs.get(other_inputs) is not None:
@@ -729,10 +726,14 @@ class GaudiGenerationMixin(GenerationMixin):
                 )
             self._setup_cache(cache_cls, max_batch_size=batch_size, max_cache_len=generation_config.max_length)
 
-        #TODO: 
+        input_length =  input_ids_length
+        
+        if "token_idx" in model_kwargs and input_ids_length >= model_kwargs['token_idx']:
+            input_length =  model_kwargs['token_idx']
+
         self._validate_generated_length(
             generation_config,
-            input_ids_length,
+            input_length,
             has_default_max_length,
         )
 
@@ -954,6 +955,7 @@ class GaudiGenerationMixin(GenerationMixin):
                 is_encoder_decoder=self.config.is_encoder_decoder,
                 **model_kwargs,
             )
+            
             # 13. run beam search
             return self.beam_search(
                 input_ids,
@@ -1535,10 +1537,8 @@ class GaudiGenerationMixin(GenerationMixin):
 
             # update generated ids, model inputs, and length for next step
             if token_idx is not None:
-                #print("second token:", input_ids.shape)
                 if model_kwargs["attention_mask"] is not None and model_kwargs["attention_mask"].shape[1] > input_ids.shape[1]:
                     input_ids = torch.cat([input_ids, next_tokens[:, None]], dim=-1)
-                    #print(input_ids)
                 else:
                     input_ids.index_copy_(
                         1, token_idx, next_tokens.unsqueeze(-1) if next_tokens.dim() == 1 else next_tokens
@@ -2121,10 +2121,12 @@ class GaudiGenerationMixin(GenerationMixin):
         num_beams = beam_scorer.num_beams
 
         batch_beam_size, cur_len = input_ids.shape
-        token_idx = model_kwargs.get("token_idx", None)
-        if token_idx is not None:
-            # Update cur_len in case of static shapes
-            cur_len = token_idx.item()
+        is_input_ids_padded = False
+        if "token_idx" in model_kwargs:
+            # inputs_ids is not null and it has padding for static shape
+            if cur_len >= model_kwargs['token_idx']:
+                cur_len = model_kwargs['token_idx']
+                is_input_ids_padded = True
 
         if num_beams * batch_size != batch_beam_size:
             raise ValueError(
@@ -2155,14 +2157,15 @@ class GaudiGenerationMixin(GenerationMixin):
         beam_scores = beam_scores.view((batch_size * num_beams,))
 
         if self.generation_config.static_shapes:
+            prompt_len = model_kwargs["attention_mask"].shape[1]
             beam_trace_scores = torch.zeros(
-                (input_ids.shape[1], 2 * batch_size * num_beams), device=input_ids.device, dtype=torch.float32
+                (prompt_len, 2 * batch_size * num_beams), device=input_ids.device, dtype=torch.float32
             )
             beam_trace_indices = torch.zeros(
-                (input_ids.shape[1], 2 * batch_size * num_beams), device=input_ids.device, dtype=torch.int64
+                (prompt_len, 2 * batch_size * num_beams), device=input_ids.device, dtype=torch.int64
             )
             beam_trace_tokens = torch.zeros(
-                (input_ids.shape[1], 2 * batch_size * num_beams), device=input_ids.device, dtype=torch.int64
+                (prompt_len, 2 * batch_size * num_beams), device=input_ids.device, dtype=torch.int64
             )
             beam_trace_idx = torch.tensor(0, device=input_ids.device)
             num_eos_tokens = torch.zeros((1), device=input_ids.device, dtype=torch.int64)
@@ -2236,6 +2239,7 @@ class GaudiGenerationMixin(GenerationMixin):
                 )
                 for i, b in enumerate(best)
             ]
+
             max_length = max([t.shape[-1] for t in result])
             result = [expand_if_needed(res, max_length, model_config.pad_token_id) for res in result]
             input_ids = torch.stack(result)
@@ -2247,6 +2251,8 @@ class GaudiGenerationMixin(GenerationMixin):
 
         bucket_size = model_kwargs.get("bucket_size", -1)
         reduce_recompile = model_kwargs.get("reduce_recompile", False)
+        
+        # TODO: check prompt_len
         prompt_len = input_ids.shape[-1]
         if bucket_size >= 0:
             inc = iter(incrementor(bucket_size, prompt_len))
@@ -2326,6 +2332,7 @@ class GaudiGenerationMixin(GenerationMixin):
                 continue  # don't waste resources running the code we don't need
 
             token_idx = model_kwargs.get("token_idx", None)
+
             if token_idx is not None and outputs.logits.shape[-2] > 1:
                 next_token_logits = torch.index_select(outputs.logits, -2, token_idx - 1).squeeze(-2)
             else:
@@ -2335,7 +2342,7 @@ class GaudiGenerationMixin(GenerationMixin):
                 next_token_logits, dim=-1
             )  # (batch_size * num_beams, vocab_size)
 
-            if token_idx is not None:
+            if is_input_ids_padded:
                 next_token_scores_processed = logits_processor(input_ids[:, :token_idx], next_token_scores)
             else:
                 next_token_scores_processed = logits_processor(input_ids, next_token_scores)
@@ -2373,15 +2380,21 @@ class GaudiGenerationMixin(GenerationMixin):
             )
 
             next_indices = torch.div(next_tokens, vocab_size, rounding_mode="floor")
+
             if self.generation_config.static_shapes:
                 beam_scores = next_token_scores.flatten()
                 static_beam_indices = next_indices.flatten()
-
                 beam_tokens = next_tokens.remainder(vocab_size).flatten()
 
                 beam_trace_scores.index_copy_(0, beam_trace_idx, beam_scores.unsqueeze(0))
                 beam_trace_indices.index_copy_(0, beam_trace_idx, static_beam_indices.unsqueeze(0))
                 beam_trace_tokens.index_copy_(0, beam_trace_idx, beam_tokens.unsqueeze(0))
+                '''    
+                else:
+                    beam_trace_tokens = torch.cat([beam_trace_tokens[beam_trace_idx, :], beam_tokens.unsqueeze(0)])
+                    beam_trace_indices= torch.cat([beam_trace_indices[beam_trace_idx, :], static_beam_indices.unsqueeze(0)])
+                    beam_trace_scores = torch.cat([beam_trace_scores[beam_trace_idx, :], beam_scores.unsqueeze(0)])
+                '''
                 beam_trace_idx.add_(1)
 
                 if self.generation_config.early_stopping:
@@ -2422,13 +2435,14 @@ class GaudiGenerationMixin(GenerationMixin):
                 beam_next_tokens = beam_outputs["next_beam_tokens"]
                 beam_idx = beam_outputs["next_beam_indices"]
 
-            if token_idx is not None:
+
+            if is_input_ids_padded:
                 input_ids = torch.index_select(input_ids, 0, beam_idx)
                 input_ids.index_copy_(
                     1, token_idx, beam_next_tokens.unsqueeze(-1) if beam_next_tokens.dim() == 1 else beam_next_tokens
                 )
             else:
-                input_ids = torch.cat([input_ids[beam_idx, :], beam_next_tokens.unsqueeze(-1)], dim=-1)
+                input_ids = torch.cat([input_ids[beam_idx, :], beam_next_tokens], dim=-1)
 
             model_kwargs = self._update_model_kwargs_for_generation(
                 outputs, model_kwargs, is_encoder_decoder=self.config.is_encoder_decoder
