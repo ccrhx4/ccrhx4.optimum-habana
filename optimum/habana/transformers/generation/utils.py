@@ -2125,7 +2125,7 @@ class GaudiGenerationMixin(GenerationMixin):
         if "token_idx" in model_kwargs:
             # inputs_ids is not null and it has padding for static shape
             if cur_len >= model_kwargs['token_idx']:
-                cur_len = model_kwargs['token_idx']
+                cur_len = model_kwargs['token_idx'].item()
                 is_input_ids_padded = True
 
         if num_beams * batch_size != batch_beam_size:
