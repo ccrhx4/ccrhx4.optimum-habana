@@ -38,20 +38,16 @@ from transformers import (
     AutoTokenizer,
     DataCollatorForLanguageModeling,
     HfArgumentParser,
+    TrainingArguments,
+    Trainer,
 )
 from transformers.trainer_utils import is_main_process
 
-from optimum.habana import GaudiConfig, GaudiTrainer, GaudiTrainingArguments
-from optimum.habana.utils import set_seed
-
-
-try:
-    from optimum.habana.utils import check_optimum_habana_min_version
-except ImportError:
-
-    def check_optimum_habana_min_version(*a, **b):
-        return ()
-
+use_cuda_env = os.getenv('USE_CUDA', "0")
+use_cuda = False
+print(use_cuda_env)
+if use_cuda_env == "1":
+    use_cuda = True
 
 IGNORE_INDEX = -100
 
@@ -59,9 +55,8 @@ os.environ["WANDB_DISABLED"] = "true"
 
 logger = logging.getLogger(__name__)
 
-# Will error if the minimal version of Optimum Habana is not installed. Remove at your own risks.
-check_optimum_habana_min_version("1.10.0")
-
+if use_cuda is False:
+    from optimum.habana import GaudiConfig, GaudiTrainer, GaudiTrainingArguments
 
 @dataclass
 class ModelArguments:
@@ -180,6 +175,14 @@ class ModelArguments:
                 "https://huggingface.co/blog/accelerate-large-models"
             )
         },
+    )
+    num_hidden_layers: int = field(
+        default = 32,
+        metadata = {
+            "help": (
+                "set number of hidden layers to load."
+                )
+            },
     )
 
 
@@ -389,7 +392,10 @@ def main():
     # or by passing the --help flag to this script.
     # We now keep distinct sets of args, for a cleaner separation of concerns.
 
-    parser = HfArgumentParser((ModelArguments, DataArguments, GaudiTrainingArguments, FinetuneArguments))
+    if use_cuda:
+        parser = HfArgumentParser((ModelArguments, DataArguments, TrainingArguments, FinetuneArguments))
+    else:
+        parser = HfArgumentParser((ModelArguments, DataArguments, GaudiTrainingArguments, FinetuneArguments))
 
     if len(sys.argv) == 2 and sys.argv[1].endswith(".json"):
         # If we pass only one argument to the script and it's the path to a json file,
@@ -404,7 +410,7 @@ def main():
             training_args,
             finetune_args,
         ) = parser.parse_args_into_dataclasses()
-
+   
     # Setup logging
     logging.basicConfig(
         format="%(asctime)s - %(levelname)s - %(name)s -   %(message)s",
@@ -427,7 +433,11 @@ def main():
     logger.info(f"Training/evaluation parameters {training_args}")
 
     # Set seed before initializing model.
-    set_seed(training_args.seed)
+    if use_cuda:
+        torch.manual_seed(training_args.seed)
+    else:
+        from optimum.habana.utils import set_seed
+        set_seed(training_args.seed)
 
     # Load pretrained model and tokenizer
     #
@@ -441,6 +451,7 @@ def main():
         "trust_remote_code": True if model_args.trust_remote_code else None,
         "use_cache": False if training_args.gradient_checkpointing else model_args.use_cache,
         "token": model_args.token,
+        "num_hidden_layers": model_args.num_hidden_layers,
     }
     if model_args.config_name:
         config = AutoConfig.from_pretrained(model_args.config_name, **config_kwargs)
@@ -767,22 +778,36 @@ def main():
         if training_args.bf16 and finetune_args.peft_type != "ia3":
             lora_model = lora_model.to(torch.bfloat16)
         lora_model.print_trainable_parameters()
-        gaudi_config = GaudiConfig()
-        gaudi_config.use_fused_adam = True
-        gaudi_config.use_fused_clip_norm = True
+        
+        if use_cuda is False:
+            gaudi_config = GaudiConfig()
+            gaudi_config.use_fused_adam = True
+            gaudi_config.use_fused_clip_norm = True
 
-        # Initialize our Trainer
-        trainer = GaudiTrainer(
-            model=lora_model,
-            gaudi_config=gaudi_config,
-            args=training_args,
-            train_dataset=train_dataset if training_args.do_train else None,
-            eval_dataset=eval_dataset if training_args.do_eval else None,
-            tokenizer=tokenizer,
-            data_collator=data_collator,
-            compute_metrics=compute_metrics if training_args.do_eval else None,
-            preprocess_logits_for_metrics=preprocess_logits_for_metrics if training_args.do_eval else None,
-        )
+            # Initialize our Trainer
+            trainer = GaudiTrainer(
+                model=lora_model,
+                gaudi_config=gaudi_config,
+                args=training_args,
+                train_dataset=train_dataset if training_args.do_train else None,
+                eval_dataset=eval_dataset if training_args.do_eval else None,
+                tokenizer=tokenizer,
+                data_collator=data_collator,
+                compute_metrics=compute_metrics if training_args.do_eval else None,
+                preprocess_logits_for_metrics=preprocess_logits_for_metrics if training_args.do_eval else None,
+            )
+
+        if use_cuda is True:
+            trainer = Trainer(
+                model=lora_model,
+                args=training_args,
+                train_dataset=train_dataset if training_args.do_train else None,
+                eval_dataset=eval_dataset if training_args.do_eval else None,
+                tokenizer=tokenizer,
+                data_collator=data_collator,
+                compute_metrics=compute_metrics if training_args.do_eval else None,
+                preprocess_logits_for_metrics=preprocess_logits_for_metrics if training_args.do_eval else None,
+            )
 
         # Solution for https://github.com/huggingface/peft/blob/v0.6.2/README.md#caveats (1)
         if training_args.fsdp and training_args.fsdp_config["auto_wrap_policy"] == "TRANSFORMER_BASED_WRAP":
