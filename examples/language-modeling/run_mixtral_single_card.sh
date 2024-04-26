@@ -25,5 +25,7 @@ python  run_lora_clm.py \
      	--lora_rank 64 \
 	--lora_alpha 16 \
 	--use_fast_tokenizer True \
+	--load_4_bits True \
+	--low_cpu_mem_usage True \
 	--num_hidden_layers 16
 

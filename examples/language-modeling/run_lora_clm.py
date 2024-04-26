@@ -36,6 +36,7 @@ from transformers import (
     AutoConfig,
     AutoModelForCausalLM,
     AutoTokenizer,
+    BitsAndBytesConfig,
     DataCollatorForLanguageModeling,
     HfArgumentParser,
     TrainingArguments,
@@ -184,7 +185,14 @@ class ModelArguments:
                 )
             },
     )
-
+    load_4_bits: bool = field(
+        default=False,
+        metadata={
+            "help": (
+                "It is an option to load the model in 4 bits."
+            )
+        },
+    )
 
 @dataclass
 class DataArguments:
@@ -581,18 +589,29 @@ def main():
         raise ValueError("Unsupported dataset")
     # Load model
     if model_args.model_name_or_path:
+        if model_args.load_4_bits is True and use_cuda is True:
+            nf4_config = BitsAndBytesConfig(
+            load_in_4bit=True,
+            bnb_4bit_quant_type="nf4",
+            bnb_4bit_use_double_quant=True,
+            bnb_4bit_compute_dtype=torch.bfloat16)
+        else:
+            nf4_config = BitsAndBytesConfig(load_in_4bit=False)
+
         model_dtype = torch.bfloat16 if training_args.bf16 else None
         model = AutoModelForCausalLM.from_pretrained(
             model_args.model_name_or_path,
             from_tf=bool(".ckpt" in model_args.model_name_or_path),
             config=config,
+            quantization_config=nf4_config,
             cache_dir=model_args.cache_dir,
             revision=model_args.model_revision,
             use_auth_token=True if model_args.use_auth_token else None,
             trust_remote_code=True if model_args.trust_remote_code else None,
             torch_dtype=model_dtype,
             low_cpu_mem_usage=model_args.low_cpu_mem_usage,
-            device_map=training_args.device.type if model_args.load_meta_device else None,
+            device_map="auto", #TODO: whey meta not work
+            #device_map=training_args.device.type if model_args.load_meta_device else None,
             token=model_args.token,
         )
     else:
