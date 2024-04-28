@@ -1,0 +1,749 @@
+root@silviac-idc155-2:/ccrhx4.optimum-habana/examples/language-modeling# ./run_mixtral_8_card.sh 
+/usr/local/lib/python3.10/dist-packages/transformers/utils/generic.py:462: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
+  _torch_pytree._register_pytree_node(
+/usr/local/lib/python3.10/dist-packages/transformers/utils/generic.py:319: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
+  _torch_pytree._register_pytree_node(
+/usr/local/lib/python3.10/dist-packages/transformers/utils/generic.py:319: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
+  _torch_pytree._register_pytree_node(
+[WARNING|utils.py:198] 2024-04-28 06:29:12,405 >> optimum-habana v1.12.0.dev0 has been validated for SynapseAI v1.15.0 but the driver version is v1.14.0, this could lead to undefined behavior!
+DistributedRunner run(): command = deepspeed --num_nodes 1 --num_gpus 8 --no_local_rank --master_port 29500 run_lora_clm.py --model_name_or_path mistralai/Mixtral-8x7B-v0.1 --bf16 True --dataset_name tatsu-lab/alpaca --dataset_concatenation --per_device_train_batch_size 4 --per_device_eval_batch_size 8 --gradient_accumulation_steps 4 --do_train --learning_rate 1e-4 --logging_steps 1 --overwrite_output_dir --log_level info --output_dir ./mixtral_peft_finetuned_model --peft lora --lora_target_modules q_proj v_proj --lora_rank 4 --use_fast_tokenizer True --use_habana --use_lazy_mode --throughput_warmup_steps 3 --max_steps 50 --deepspeed llama2_ds_zero3_config.json
+/usr/local/lib/python3.10/dist-packages/transformers/utils/generic.py:462: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
+  _torch_pytree._register_pytree_node(
+/usr/local/lib/python3.10/dist-packages/habana_frameworks/torch/hpu/__init__.py:158: UserWarning: torch.hpu.setDeterministic is deprecated and will be removed in next release. Please use torch.use_deterministic_algorithms instead.
+  warnings.warn(
+[2024-04-28 06:29:14,042] [INFO] [real_accelerator.py:178:get_accelerator] Setting ds_accelerator to hpu (auto detect)
+/usr/local/lib/python3.10/dist-packages/transformers/utils/generic.py:319: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
+  _torch_pytree._register_pytree_node(
+/usr/local/lib/python3.10/dist-packages/transformers/utils/generic.py:319: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
+  _torch_pytree._register_pytree_node(
+[2024-04-28 06:29:15,553] [WARNING] [runner.py:206:fetch_hostfile] Unable to find hostfile, will proceed with training with local resources only.
+[2024-04-28 06:29:15,623] [INFO] [runner.py:585:main] cmd = /usr/bin/python3 -u -m deepspeed.launcher.launch --world_info=eyJsb2NhbGhvc3QiOiBbMCwgMSwgMiwgMywgNCwgNSwgNiwgN119 --master_addr=127.0.0.1 --master_port=29500 --no_local_rank --enable_each_rank_log=None run_lora_clm.py --model_name_or_path mistralai/Mixtral-8x7B-v0.1 --bf16 True --dataset_name tatsu-lab/alpaca --dataset_concatenation --per_device_train_batch_size 4 --per_device_eval_batch_size 8 --gradient_accumulation_steps 4 --do_train --learning_rate 1e-4 --logging_steps 1 --overwrite_output_dir --log_level info --output_dir ./mixtral_peft_finetuned_model --peft lora --lora_target_modules q_proj v_proj --lora_rank 4 --use_fast_tokenizer True --use_habana --use_lazy_mode --throughput_warmup_steps 3 --max_steps 50 --deepspeed llama2_ds_zero3_config.json
+/usr/local/lib/python3.10/dist-packages/transformers/utils/generic.py:462: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
+  _torch_pytree._register_pytree_node(
+/usr/local/lib/python3.10/dist-packages/habana_frameworks/torch/hpu/__init__.py:158: UserWarning: torch.hpu.setDeterministic is deprecated and will be removed in next release. Please use torch.use_deterministic_algorithms instead.
+  warnings.warn(
+[2024-04-28 06:29:17,249] [INFO] [real_accelerator.py:178:get_accelerator] Setting ds_accelerator to hpu (auto detect)
+/usr/local/lib/python3.10/dist-packages/transformers/utils/generic.py:319: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
+  _torch_pytree._register_pytree_node(
+/usr/local/lib/python3.10/dist-packages/transformers/utils/generic.py:319: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
+  _torch_pytree._register_pytree_node(
+[2024-04-28 06:29:18,758] [INFO] [launch.py:145:main] WORLD INFO DICT: {'localhost': [0, 1, 2, 3, 4, 5, 6, 7]}
+[2024-04-28 06:29:18,759] [INFO] [launch.py:151:main] nnodes=1, num_local_procs=8, node_rank=0
+[2024-04-28 06:29:18,759] [INFO] [launch.py:162:main] global_rank_mapping=defaultdict(<class 'list'>, {'localhost': [0, 1, 2, 3, 4, 5, 6, 7]})
+[2024-04-28 06:29:18,759] [INFO] [launch.py:163:main] dist_world_size=8
+[2024-04-28 06:29:18,759] [INFO] [launch.py:165:main] Setting CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7
+/usr/local/lib/python3.10/dist-packages/transformers/utils/generic.py:462: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
+  _torch_pytree._register_pytree_node(
+/usr/local/lib/python3.10/dist-packages/transformers/utils/generic.py:462: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
+  _torch_pytree._register_pytree_node(
+/usr/local/lib/python3.10/dist-packages/transformers/utils/generic.py:462: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
+  _torch_pytree._register_pytree_node(
+/usr/local/lib/python3.10/dist-packages/transformers/utils/generic.py:462: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
+  _torch_pytree._register_pytree_node(
+/usr/local/lib/python3.10/dist-packages/transformers/utils/generic.py:462: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
+  _torch_pytree._register_pytree_node(
+/usr/local/lib/python3.10/dist-packages/transformers/utils/generic.py:462: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
+  _torch_pytree._register_pytree_node(
+/usr/local/lib/python3.10/dist-packages/transformers/utils/generic.py:462: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
+  _torch_pytree._register_pytree_node(
+/usr/local/lib/python3.10/dist-packages/transformers/utils/generic.py:462: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
+  _torch_pytree._register_pytree_node(
+/usr/local/lib/python3.10/dist-packages/transformers/utils/generic.py:319: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
+  _torch_pytree._register_pytree_node(
+/usr/local/lib/python3.10/dist-packages/transformers/utils/generic.py:319: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
+  _torch_pytree._register_pytree_node(
+/usr/local/lib/python3.10/dist-packages/transformers/utils/generic.py:319: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
+  _torch_pytree._register_pytree_node(
+/usr/local/lib/python3.10/dist-packages/transformers/utils/generic.py:319: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
+  _torch_pytree._register_pytree_node(
+/usr/local/lib/python3.10/dist-packages/transformers/utils/generic.py:319: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
+  _torch_pytree._register_pytree_node(
+/usr/local/lib/python3.10/dist-packages/transformers/utils/generic.py:319: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
+  _torch_pytree._register_pytree_node(
+/usr/local/lib/python3.10/dist-packages/transformers/utils/generic.py:319: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
+  _torch_pytree._register_pytree_node(
+/usr/local/lib/python3.10/dist-packages/transformers/utils/generic.py:319: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
+  _torch_pytree._register_pytree_node(
+/usr/local/lib/python3.10/dist-packages/transformers/utils/generic.py:319: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
+  _torch_pytree._register_pytree_node(
+/usr/local/lib/python3.10/dist-packages/transformers/utils/generic.py:319: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
+  _torch_pytree._register_pytree_node(
+/usr/local/lib/python3.10/dist-packages/transformers/utils/generic.py:319: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
+  _torch_pytree._register_pytree_node(
+0
+0
+/usr/local/lib/python3.10/dist-packages/transformers/utils/generic.py:319: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
+  _torch_pytree._register_pytree_node(
+/usr/local/lib/python3.10/dist-packages/transformers/utils/generic.py:319: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
+  _torch_pytree._register_pytree_node(
+/usr/local/lib/python3.10/dist-packages/transformers/utils/generic.py:319: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
+  _torch_pytree._register_pytree_node(
+0
+/usr/local/lib/python3.10/dist-packages/transformers/utils/generic.py:319: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
+  _torch_pytree._register_pytree_node(
+/usr/local/lib/python3.10/dist-packages/transformers/utils/generic.py:319: UserWarning: torch.utils._pytree._register_pytree_node is deprecated. Please use torch.utils._pytree.register_pytree_node instead.
+  _torch_pytree._register_pytree_node(
+0
+0
+0
+0
+0
+[WARNING|utils.py:198] 2024-04-28 06:29:23,278 >> optimum-habana v1.12.0.dev0 has been validated for SynapseAI v1.15.0 but the driver version is v1.14.0, this could lead to undefined behavior!
+Using the `WANDB_DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).
+[INFO|training_args.py:784] 2024-04-28 06:29:23,483 >> Enabled lazy mode.
+/usr/local/lib/python3.10/dist-packages/habana_frameworks/torch/hpu/__init__.py:158: UserWarning: torch.hpu.setDeterministic is deprecated and will be removed in next release. Please use torch.use_deterministic_algorithms instead.
+  warnings.warn(
+[2024-04-28 06:29:23,583] [INFO] [real_accelerator.py:178:get_accelerator] Setting ds_accelerator to hpu (auto detect)
+[WARNING|utils.py:198] 2024-04-28 06:29:23,821 >> optimum-habana v1.12.0.dev0 has been validated for SynapseAI v1.15.0 but the driver version is v1.14.0, this could lead to undefined behavior!
+Using the `WANDB_DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).
+[WARNING|utils.py:198] 2024-04-28 06:29:23,878 >> optimum-habana v1.12.0.dev0 has been validated for SynapseAI v1.15.0 but the driver version is v1.14.0, this could lead to undefined behavior!
+Using the `WANDB_DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).
+[WARNING|utils.py:198] 2024-04-28 06:29:23,939 >> optimum-habana v1.12.0.dev0 has been validated for SynapseAI v1.15.0 but the driver version is v1.14.0, this could lead to undefined behavior!
+Using the `WANDB_DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).
+[INFO|training_args.py:784] 2024-04-28 06:29:24,030 >> Enabled lazy mode.
+[INFO|training_args.py:784] 2024-04-28 06:29:24,079 >> Enabled lazy mode.
+/usr/local/lib/python3.10/dist-packages/habana_frameworks/torch/hpu/__init__.py:158: UserWarning: torch.hpu.setDeterministic is deprecated and will be removed in next release. Please use torch.use_deterministic_algorithms instead.
+  warnings.warn(
+[2024-04-28 06:29:24,141] [INFO] [real_accelerator.py:178:get_accelerator] Setting ds_accelerator to hpu (auto detect)
+[INFO|training_args.py:784] 2024-04-28 06:29:24,165 >> Enabled lazy mode.
+/usr/local/lib/python3.10/dist-packages/habana_frameworks/torch/hpu/__init__.py:158: UserWarning: torch.hpu.setDeterministic is deprecated and will be removed in next release. Please use torch.use_deterministic_algorithms instead.
+  warnings.warn(
+[2024-04-28 06:29:24,188] [INFO] [real_accelerator.py:178:get_accelerator] Setting ds_accelerator to hpu (auto detect)
+/usr/local/lib/python3.10/dist-packages/habana_frameworks/torch/hpu/__init__.py:158: UserWarning: torch.hpu.setDeterministic is deprecated and will be removed in next release. Please use torch.use_deterministic_algorithms instead.
+  warnings.warn(
+[2024-04-28 06:29:24,294] [INFO] [real_accelerator.py:178:get_accelerator] Setting ds_accelerator to hpu (auto detect)
+[WARNING|utils.py:198] 2024-04-28 06:29:24,459 >> optimum-habana v1.12.0.dev0 has been validated for SynapseAI v1.15.0 but the driver version is v1.14.0, this could lead to undefined behavior!
+Using the `WANDB_DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).
+[INFO|training_args.py:784] 2024-04-28 06:29:24,685 >> Enabled lazy mode.
+[2024-04-28 06:29:24,798] [WARNING] [comm.py:163:init_deepspeed_backend] HCCL backend in DeepSpeed not yet implemented
+[2024-04-28 06:29:24,798] [INFO] [comm.py:637:init_distributed] cdb=None
+/usr/local/lib/python3.10/dist-packages/habana_frameworks/torch/hpu/__init__.py:158: UserWarning: torch.hpu.setDeterministic is deprecated and will be removed in next release. Please use torch.use_deterministic_algorithms instead.
+  warnings.warn(
+[2024-04-28 06:29:24,806] [INFO] [real_accelerator.py:178:get_accelerator] Setting ds_accelerator to hpu (auto detect)
+[WARNING|utils.py:198] 2024-04-28 06:29:24,838 >> optimum-habana v1.12.0.dev0 has been validated for SynapseAI v1.15.0 but the driver version is v1.14.0, this could lead to undefined behavior!
+Using the `WANDB_DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).
+[WARNING|utils.py:198] 2024-04-28 06:29:24,939 >> optimum-habana v1.12.0.dev0 has been validated for SynapseAI v1.15.0 but the driver version is v1.14.0, this could lead to undefined behavior!
+[WARNING|utils.py:198] 2024-04-28 06:29:24,942 >> optimum-habana v1.12.0.dev0 has been validated for SynapseAI v1.15.0 but the driver version is v1.14.0, this could lead to undefined behavior!
+Using the `WANDB_DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).
+Using the `WANDB_DISABLED` environment variable is deprecated and will be removed in v5. Use the --report_to flag to control the integrations used for logging result (for instance --report_to none).
+[INFO|training_args.py:784] 2024-04-28 06:29:25,044 >> Enabled lazy mode.
+/usr/local/lib/python3.10/dist-packages/habana_frameworks/torch/hpu/__init__.py:158: UserWarning: torch.hpu.setDeterministic is deprecated and will be removed in next release. Please use torch.use_deterministic_algorithms instead.
+  warnings.warn(
+[2024-04-28 06:29:25,147] [INFO] [real_accelerator.py:178:get_accelerator] Setting ds_accelerator to hpu (auto detect)
+[INFO|training_args.py:784] 2024-04-28 06:29:25,149 >> Enabled lazy mode.
+[INFO|training_args.py:784] 2024-04-28 06:29:25,152 >> Enabled lazy mode.
+/usr/local/lib/python3.10/dist-packages/habana_frameworks/torch/hpu/__init__.py:158: UserWarning: torch.hpu.setDeterministic is deprecated and will be removed in next release. Please use torch.use_deterministic_algorithms instead.
+  warnings.warn(
+[2024-04-28 06:29:25,263] [INFO] [real_accelerator.py:178:get_accelerator] Setting ds_accelerator to hpu (auto detect)
+/usr/local/lib/python3.10/dist-packages/habana_frameworks/torch/hpu/__init__.py:158: UserWarning: torch.hpu.setDeterministic is deprecated and will be removed in next release. Please use torch.use_deterministic_algorithms instead.
+  warnings.warn(
+[2024-04-28 06:29:25,298] [INFO] [real_accelerator.py:178:get_accelerator] Setting ds_accelerator to hpu (auto detect)
+[2024-04-28 06:29:25,326] [WARNING] [comm.py:163:init_deepspeed_backend] HCCL backend in DeepSpeed not yet implemented
+[2024-04-28 06:29:25,326] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-04-28 06:29:25,343] [WARNING] [comm.py:163:init_deepspeed_backend] HCCL backend in DeepSpeed not yet implemented
+[2024-04-28 06:29:25,343] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-04-28 06:29:25,343] [INFO] [comm.py:668:init_distributed] Initializing TorchBackend in DeepSpeed with backend hccl
+[2024-04-28 06:29:25,516] [WARNING] [comm.py:163:init_deepspeed_backend] HCCL backend in DeepSpeed not yet implemented
+[2024-04-28 06:29:25,516] [INFO] [comm.py:637:init_distributed] cdb=None
+[INFO|state.py:68] 2024-04-28 06:29:25,549 >> DeepSpeed is enabled.
+04/28/2024 06:29:25 - WARNING - __main__ -   Process rank: 2, device: hpu, distributed training: True, 16-bits training: True
+[INFO|state.py:68] 2024-04-28 06:29:25,838 >> DeepSpeed is enabled.
+04/28/2024 06:29:25 - WARNING - __main__ -   Process rank: 5, device: hpu, distributed training: True, 16-bits training: True
+/usr/local/lib/python3.10/dist-packages/datasets/load.py:2547: FutureWarning: 'use_auth_token' was deprecated in favor of 'token' in version 2.14.0 and will be removed in 3.0.0.
+You can remove this warning by passing 'token=<use_auth_token>' instead.
+  warnings.warn(
+[2024-04-28 06:29:26,005] [WARNING] [comm.py:163:init_deepspeed_backend] HCCL backend in DeepSpeed not yet implemented
+[2024-04-28 06:29:26,006] [INFO] [comm.py:637:init_distributed] cdb=None
+[INFO|state.py:68] 2024-04-28 06:29:26,039 >> DeepSpeed is enabled.
+04/28/2024 06:29:26 - WARNING - __main__ -   Process rank: 4, device: hpu, distributed training: True, 16-bits training: True
+/usr/local/lib/python3.10/dist-packages/datasets/load.py:2547: FutureWarning: 'use_auth_token' was deprecated in favor of 'token' in version 2.14.0 and will be removed in 3.0.0.
+You can remove this warning by passing 'token=<use_auth_token>' instead.
+  warnings.warn(
+/usr/local/lib/python3.10/dist-packages/datasets/load.py:2547: FutureWarning: 'use_auth_token' was deprecated in favor of 'token' in version 2.14.0 and will be removed in 3.0.0.
+You can remove this warning by passing 'token=<use_auth_token>' instead.
+  warnings.warn(
+[2024-04-28 06:29:26,318] [WARNING] [comm.py:163:init_deepspeed_backend] HCCL backend in DeepSpeed not yet implemented
+[2024-04-28 06:29:26,318] [INFO] [comm.py:637:init_distributed] cdb=None
+[INFO|state.py:68] 2024-04-28 06:29:26,354 >> DeepSpeed is enabled.
+04/28/2024 06:29:26 - WARNING - __main__ -   Process rank: 3, device: hpu, distributed training: True, 16-bits training: True
+[INFO|state.py:68] 2024-04-28 06:29:26,357 >> DeepSpeed is enabled.
+04/28/2024 06:29:26 - WARNING - __main__ -   Process rank: 7, device: hpu, distributed training: True, 16-bits training: True
+[2024-04-28 06:29:26,432] [WARNING] [comm.py:163:init_deepspeed_backend] HCCL backend in DeepSpeed not yet implemented
+[2024-04-28 06:29:26,432] [INFO] [comm.py:637:init_distributed] cdb=None
+[INFO|state.py:68] 2024-04-28 06:29:26,463 >> DeepSpeed is enabled.
+04/28/2024 06:29:26 - WARNING - __main__ -   Process rank: 6, device: hpu, distributed training: True, 16-bits training: True
+[2024-04-28 06:29:26,488] [WARNING] [comm.py:163:init_deepspeed_backend] HCCL backend in DeepSpeed not yet implemented
+[2024-04-28 06:29:26,488] [INFO] [comm.py:637:init_distributed] cdb=None
+[INFO|state.py:68] 2024-04-28 06:29:26,523 >> DeepSpeed is enabled.
+04/28/2024 06:29:26 - WARNING - __main__ -   Process rank: 1, device: hpu, distributed training: True, 16-bits training: True
+[INFO|state.py:68] 2024-04-28 06:29:26,528 >> DeepSpeed is enabled.
+04/28/2024 06:29:26 - WARNING - __main__ -   Process rank: 0, device: hpu, distributed training: True, 16-bits training: True
+04/28/2024 06:29:26 - INFO - __main__ -   Training/evaluation parameters GaudiTrainingArguments(
+_n_gpu=1,
+accelerator_config={'split_batches': False, 'dispatch_batches': None, 'even_batches': True, 'use_seedable_sampler': True},
+adafactor=False,
+adam_beta1=0.9,
+adam_beta2=0.999,
+adam_epsilon=1e-06,
+adjust_throughput=False,
+auto_find_batch_size=False,
+bf16=True,
+bf16_full_eval=False,
+data_seed=None,
+dataloader_drop_last=False,
+dataloader_num_workers=0,
+dataloader_persistent_workers=False,
+dataloader_pin_memory=True,
+dataloader_prefetch_factor=None,
+ddp_backend=hccl,
+ddp_broadcast_buffers=None,
+ddp_bucket_cap_mb=230,
+ddp_find_unused_parameters=False,
+ddp_timeout=1800,
+debug=[],
+deepspeed=llama2_ds_zero3_config.json,
+disable_tensor_cache_hpu_graphs=False,
+disable_tqdm=False,
+dispatch_batches=None,
+distribution_strategy=ddp,
+do_eval=False,
+do_predict=False,
+do_train=True,
+eval_accumulation_steps=None,
+eval_delay=0,
+eval_steps=None,
+evaluation_strategy=no,
+fsdp=[],
+fsdp_config={'min_num_params': 0, 'xla': False, 'xla_fsdp_v2': False, 'xla_fsdp_grad_ckpt': False},
+fsdp_min_num_params=0,
+fsdp_transformer_layer_cls_to_wrap=None,
+full_determinism=False,
+gaudi_config_name=None,
+gradient_accumulation_steps=4,
+gradient_checkpointing=False,
+gradient_checkpointing_kwargs=None,
+greater_is_better=None,
+group_by_length=False,
+half_precision_backend=hpu_amp,
+hub_always_push=False,
+hub_model_id=None,
+hub_private_repo=False,
+hub_strategy=every_save,
+hub_token=<HUB_TOKEN>,
+ignore_data_skip=False,
+ignore_eos=True,
+include_inputs_for_metrics=False,
+include_num_input_tokens_seen=False,
+include_tokens_per_second=False,
+jit_mode_eval=False,
+label_names=None,
+label_smoothing_factor=0.0,
+learning_rate=0.0001,
+length_column_name=length,
+load_best_model_at_end=False,
+local_rank=0,
+log_level=info,
+log_level_replica=warning,
+log_on_each_node=True,
+logging_dir=./mixtral_peft_finetuned_model/runs/Apr28_06-29-23_silviac-idc155-2,
+logging_first_step=False,
+logging_nan_inf_filter=False,
+logging_steps=1.0,
+logging_strategy=steps,
+lr_scheduler_kwargs={},
+lr_scheduler_type=linear,
+max_grad_norm=1.0,
+max_hpu_graphs=None,
+max_steps=50,
+metric_for_best_model=None,
+neftune_noise_alpha=None,
+no_cuda=False,
+non_blocking_data_copy=False,
+num_train_epochs=3.0,
+optim=adamw_torch,
+optim_args=None,
+output_dir=./mixtral_peft_finetuned_model,
+overwrite_output_dir=True,
+past_index=-1,
+per_device_eval_batch_size=8,
+per_device_train_batch_size=4,
+pipelining_fwd_bwd=False,
+prediction_loss_only=False,
+profiling_record_shapes=True,
+profiling_steps=0,
+profiling_warmup_steps=0,
+push_to_hub=False,
+push_to_hub_model_id=None,
+push_to_hub_organization=None,
+push_to_hub_token=<PUSH_TO_HUB_TOKEN>,
+ray_scope=last,
+remove_unused_columns=True,
+report_to=['tensorboard'],
+resume_from_checkpoint=None,
+run_name=./mixtral_peft_finetuned_model,
+save_on_each_node=False,
+save_only_model=False,
+save_safetensors=True,
+save_steps=500,
+save_strategy=steps,
+save_total_limit=None,
+seed=42,
+skip_memory_metrics=True,
+split_batches=None,
+throughput_warmup_steps=3,
+torch_compile=False,
+torch_compile_backend=None,
+torch_compile_mode=None,
+torchdynamo=None,
+use_cpu=False,
+use_habana=True,
+use_hpu_graphs=False,
+use_hpu_graphs_for_inference=False,
+use_hpu_graphs_for_training=False,
+use_ipex=False,
+use_lazy_mode=True,
+use_legacy_prediction_loop=False,
+use_mps_device=False,
+warmup_ratio=0.0,
+warmup_steps=0,
+weight_decay=0.0,
+)
+/usr/local/lib/python3.10/dist-packages/datasets/load.py:2547: FutureWarning: 'use_auth_token' was deprecated in favor of 'token' in version 2.14.0 and will be removed in 3.0.0.
+You can remove this warning by passing 'token=<use_auth_token>' instead.
+  warnings.warn(
+/usr/local/lib/python3.10/dist-packages/datasets/load.py:2547: FutureWarning: 'use_auth_token' was deprecated in favor of 'token' in version 2.14.0 and will be removed in 3.0.0.
+You can remove this warning by passing 'token=<use_auth_token>' instead.
+  warnings.warn(
+[INFO|configuration_utils.py:728] 2024-04-28 06:29:26,663 >> loading configuration file config.json from cache at /root/.cache/huggingface/hub/models--mistralai--Mixtral-8x7B-v0.1/snapshots/985aa055896a8f943d4a9f2572e6ea1341823841/config.json
+[INFO|configuration_utils.py:791] 2024-04-28 06:29:26,664 >> Model config MixtralConfig {
+  "_name_or_path": "mistralai/Mixtral-8x7B-v0.1",
+  "architectures": [
+    "MixtralForCausalLM"
+  ],
+  "attention_dropout": 0.0,
+  "bos_token_id": 1,
+  "eos_token_id": 2,
+  "hidden_act": "silu",
+  "hidden_size": 4096,
+  "initializer_range": 0.02,
+  "intermediate_size": 14336,
+  "max_position_embeddings": 32768,
+  "model_type": "mixtral",
+  "num_attention_heads": 32,
+  "num_experts_per_tok": 2,
+  "num_hidden_layers": 32,
+  "num_key_value_heads": 8,
+  "num_local_experts": 8,
+  "output_router_logits": false,
+  "rms_norm_eps": 1e-05,
+  "rope_theta": 1000000.0,
+  "router_aux_loss_coef": 0.02,
+  "sliding_window": null,
+  "tie_word_embeddings": false,
+  "torch_dtype": "bfloat16",
+  "transformers_version": "4.38.2",
+  "use_cache": true,
+  "vocab_size": 32000
+}
+
+[INFO|tokenization_utils_base.py:2046] 2024-04-28 06:29:26,743 >> loading file tokenizer.model from cache at /root/.cache/huggingface/hub/models--mistralai--Mixtral-8x7B-v0.1/snapshots/985aa055896a8f943d4a9f2572e6ea1341823841/tokenizer.model
+[INFO|tokenization_utils_base.py:2046] 2024-04-28 06:29:26,743 >> loading file tokenizer.json from cache at /root/.cache/huggingface/hub/models--mistralai--Mixtral-8x7B-v0.1/snapshots/985aa055896a8f943d4a9f2572e6ea1341823841/tokenizer.json
+[INFO|tokenization_utils_base.py:2046] 2024-04-28 06:29:26,743 >> loading file added_tokens.json from cache at None
+[INFO|tokenization_utils_base.py:2046] 2024-04-28 06:29:26,743 >> loading file special_tokens_map.json from cache at /root/.cache/huggingface/hub/models--mistralai--Mixtral-8x7B-v0.1/snapshots/985aa055896a8f943d4a9f2572e6ea1341823841/special_tokens_map.json
+[INFO|tokenization_utils_base.py:2046] 2024-04-28 06:29:26,743 >> loading file tokenizer_config.json from cache at /root/.cache/huggingface/hub/models--mistralai--Mixtral-8x7B-v0.1/snapshots/985aa055896a8f943d4a9f2572e6ea1341823841/tokenizer_config.json
+/usr/local/lib/python3.10/dist-packages/datasets/load.py:2547: FutureWarning: 'use_auth_token' was deprecated in favor of 'token' in version 2.14.0 and will be removed in 3.0.0.
+You can remove this warning by passing 'token=<use_auth_token>' instead.
+  warnings.warn(
+/usr/local/lib/python3.10/dist-packages/datasets/load.py:2547: FutureWarning: 'use_auth_token' was deprecated in favor of 'token' in version 2.14.0 and will be removed in 3.0.0.
+You can remove this warning by passing 'token=<use_auth_token>' instead.
+  warnings.warn(
+/usr/local/lib/python3.10/dist-packages/datasets/load.py:2547: FutureWarning: 'use_auth_token' was deprecated in favor of 'token' in version 2.14.0 and will be removed in 3.0.0.
+You can remove this warning by passing 'token=<use_auth_token>' instead.
+  warnings.warn(
+[INFO|modeling_utils.py:3257] 2024-04-28 06:29:30,540 >> loading weights file model.safetensors from cache at /root/.cache/huggingface/hub/models--mistralai--Mixtral-8x7B-v0.1/snapshots/985aa055896a8f943d4a9f2572e6ea1341823841/model.safetensors.index.json
+[INFO|modeling_utils.py:1400] 2024-04-28 06:29:30,543 >> Instantiating GaudiMixtralForCausalLM model under default dtype torch.bfloat16.
+[INFO|modeling_utils.py:3363] 2024-04-28 06:29:30,543 >> Detected DeepSpeed ZeRO-3: activating zero.init() for this model
+[INFO|configuration_utils.py:845] 2024-04-28 06:29:30,551 >> Generate config GaudiGenerationConfig {
+  "attn_softmax_bf16": null,
+  "bos_token_id": 1,
+  "bucket_internal": null,
+  "bucket_size": -1,
+  "eos_token_id": 2,
+  "flash_attention_causal_mask": null,
+  "flash_attention_recompute": null,
+  "ignore_eos": null,
+  "limit_hpu_graphs": null,
+  "reduce_recompile": null,
+  "reuse_cache": null,
+  "static_shapes": null,
+  "trim_logits": null,
+  "use_flash_attention": null,
+  "use_fused_rope": null
+}
+
+/usr/local/lib/python3.10/dist-packages/deepspeed/runtime/zero/partition_parameters.py:238: UserWarning: "hpu:X" notation is not supported by Gaudi PyTorch intergration bridge. Please change to "hpu" without index (Triggered internally at /npu-stack/pytorch-integration/pytorch_helpers/lazy_to_backend.cpp:53.)
+  tensor: Tensor = fn(*args, **kwargs)
+/usr/local/lib/python3.10/dist-packages/deepspeed/runtime/zero/partition_parameters.py:238: UserWarning: "hpu:X" notation is not supported by Gaudi PyTorch intergration bridge. Please change to "hpu" without index (Triggered internally at /npu-stack/pytorch-integration/pytorch_helpers/lazy_to_backend.cpp:53.)
+  tensor: Tensor = fn(*args, **kwargs)
+/usr/local/lib/python3.10/dist-packages/deepspeed/runtime/zero/partition_parameters.py:238: UserWarning: "hpu:X" notation is not supported by Gaudi PyTorch intergration bridge. Please change to "hpu" without index (Triggered internally at /npu-stack/pytorch-integration/pytorch_helpers/lazy_to_backend.cpp:53.)
+  tensor: Tensor = fn(*args, **kwargs)
+/usr/local/lib/python3.10/dist-packages/deepspeed/runtime/zero/partition_parameters.py:238: UserWarning: "hpu:X" notation is not supported by Gaudi PyTorch intergration bridge. Please change to "hpu" without index (Triggered internally at /npu-stack/pytorch-integration/pytorch_helpers/lazy_to_backend.cpp:53.)
+  tensor: Tensor = fn(*args, **kwargs)
+/usr/local/lib/python3.10/dist-packages/deepspeed/runtime/zero/partition_parameters.py:238: UserWarning: "hpu:X" notation is not supported by Gaudi PyTorch intergration bridge. Please change to "hpu" without index (Triggered internally at /npu-stack/pytorch-integration/pytorch_helpers/lazy_to_backend.cpp:53.)
+  tensor: Tensor = fn(*args, **kwargs)
+/usr/local/lib/python3.10/dist-packages/deepspeed/runtime/zero/partition_parameters.py:238: UserWarning: "hpu:X" notation is not supported by Gaudi PyTorch intergration bridge. Please change to "hpu" without index (Triggered internally at /npu-stack/pytorch-integration/pytorch_helpers/lazy_to_backend.cpp:53.)
+  tensor: Tensor = fn(*args, **kwargs)
+============================= HABANA PT BRIDGE CONFIGURATION =========================== 
+ PT_HPU_LAZY_MODE = 1
+ PT_RECIPE_CACHE_PATH = 
+ PT_CACHE_FOLDER_DELETE = 0
+ PT_HPU_RECIPE_CACHE_CONFIG = 
+ PT_HPU_MAX_COMPOUND_OP_SIZE = 9223372036854775807
+ PT_HPU_LAZY_ACC_PAR_MODE = 0
+ PT_HPU_ENABLE_REFINE_DYNAMIC_SHAPES = 0
+---------------------------: System Configuration :---------------------------
+Num CPU Cores : 160
+CPU RAM       : 1056375228 KB
+------------------------------------------------------------------------------
+/usr/local/lib/python3.10/dist-packages/deepspeed/runtime/zero/partition_parameters.py:238: UserWarning: "hpu:X" notation is not supported by Gaudi PyTorch intergration bridge. Please change to "hpu" without index (Triggered internally at /npu-stack/pytorch-integration/pytorch_helpers/lazy_to_backend.cpp:53.)
+  tensor: Tensor = fn(*args, **kwargs)
+[2024-04-28 06:29:37,504] [INFO] [partition_parameters.py:345:__exit__] finished initializing model - num_params = 995, num_elems = 46.70B
+Loading checkpoint shards: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 19/19 [00:21<00:00,  1.11s/it]
+Loading checkpoint shards: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 19/19 [00:21<00:00,  1.11s/it]
+Loading checkpoint shards: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 19/19 [00:21<00:00,  1.11s/it]
+Loading checkpoint shards: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 19/19 [00:21<00:00,  1.11s/it]
+Loading checkpoint shards: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 19/19 [00:21<00:00,  1.11s/it]
+Loading checkpoint shards: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 19/19 [00:21<00:00,  1.11s/it]
+Loading checkpoint shards: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 19/19 [00:21<00:00,  1.11s/it]
+Loading checkpoint shards: 100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 19/19 [00:21<00:00,  1.11s/it]
+[INFO|modeling_utils.py:3992] 2024-04-28 06:29:59,024 >> All model checkpoint weights were used when initializing GaudiMixtralForCausalLM.
+
+[INFO|modeling_utils.py:4000] 2024-04-28 06:29:59,024 >> All the weights of GaudiMixtralForCausalLM were initialized from the model checkpoint at mistralai/Mixtral-8x7B-v0.1.
+If your task is similar to the task the model of the checkpoint was trained on, you can already use GaudiMixtralForCausalLM for predictions without further training.
+[INFO|configuration_utils.py:800] 2024-04-28 06:29:59,114 >> loading configuration file generation_config.json from cache at /root/.cache/huggingface/hub/models--mistralai--Mixtral-8x7B-v0.1/snapshots/985aa055896a8f943d4a9f2572e6ea1341823841/generation_config.json
+[INFO|configuration_utils.py:845] 2024-04-28 06:29:59,114 >> Generate config GaudiGenerationConfig {
+  "attn_softmax_bf16": null,
+  "bos_token_id": 1,
+  "bucket_internal": null,
+  "bucket_size": -1,
+  "eos_token_id": 2,
+  "flash_attention_causal_mask": null,
+  "flash_attention_recompute": null,
+  "ignore_eos": null,
+  "limit_hpu_graphs": null,
+  "reduce_recompile": null,
+  "reuse_cache": null,
+  "static_shapes": null,
+  "trim_logits": null,
+  "use_flash_attention": null,
+  "use_fused_rope": null
+}
+
+04/28/2024 06:30:09 - INFO - __main__ -   Using data collator of type DataCollatorForLanguageModeling
+trainable params: 1,703,936 || all params: 46,704,496,640 || trainable%: 0.003648333934811464
+trainable params: 1,703,936 || all params: 46,704,496,640 || trainable%: 0.003648333934811464
+trainable params: 1,703,936 || all params: 46,704,496,640 || trainable%: 0.003648333934811464
+trainable params: 1,703,936 || all params: 46,704,496,640 || trainable%: 0.003648333934811464
+trainable params: 1,703,936 || all params: 46,704,496,640 || trainable%: 0.003648333934811464
+trainable params: 1,703,936 || all params: 46,704,496,640 || trainable%: 0.003648333934811464
+trainable params: 1,703,936 || all params: 46,704,496,640 || trainable%: 0.003648333934811464
+trainable params: 1,703,936 || all params: 46,704,496,640 || trainable%: 0.003648333934811464
+[INFO|trainer.py:552] 2024-04-28 06:30:10,302 >> max_steps is given, it will override any value given in num_train_epochs
+[2024-04-28 06:30:10,576] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed info: version=0.12.4+hpu.synapse.v1.15.1, git-hash=7e475fb, git-branch=1.15.1
+[2024-04-28 06:30:10,656] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
+[2024-04-28 06:30:10,661] [INFO] [logging.py:96:log_dist] [Rank 0] Using client Optimizer as basic optimizer
+[2024-04-28 06:30:10,661] [INFO] [logging.py:96:log_dist] [Rank 0] Removing param_group that has no 'params' in the basic Optimizer
+[2024-04-28 06:30:10,679] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Basic Optimizer = FusedAdamW
+[2024-04-28 06:30:10,679] [INFO] [utils.py:63:is_zero_supported_optimizer] Checking ZeRO support for optimizer=FusedAdamW type=<class 'habana_frameworks.torch.hpex.optimizers.FusedAdamW.FusedAdamW'>
+[2024-04-28 06:30:10,679] [INFO] [logging.py:96:log_dist] [Rank 0] Creating fp16 ZeRO stage 3 optimizer, MiCS is enabled False, Hierarchical params gather False
+[2024-04-28 06:30:10,679] [INFO] [logging.py:96:log_dist] [Rank 0] Creating torch.bfloat16 ZeRO stage 3 optimizer
+[2024-04-28 06:30:10,768] [INFO] [utils.py:806:see_memory_usage] Stage 3 initialize beginning
+[2024-04-28 06:30:10,772] [INFO] [utils.py:807:see_memory_usage] MA 11.4 GB         Max_MA 11.88 GB         CA 94.62 GB         Max_CA 95 GB 
+[2024-04-28 06:30:10,772] [INFO] [utils.py:814:see_memory_usage] CPU Virtual Memory:  used = 102.57 GB, percent = 10.2%
+[2024-04-28 06:30:10,780] [INFO] [stage3.py:126:__init__] Reduce bucket size 500,000,000
+[2024-04-28 06:30:10,780] [INFO] [stage3.py:127:__init__] Prefetch bucket size 50,000,000
+[2024-04-28 06:30:10,868] [INFO] [utils.py:806:see_memory_usage] DeepSpeedZeRoOffload initialize [begin]
+[2024-04-28 06:30:10,872] [INFO] [utils.py:807:see_memory_usage] MA 11.4 GB         Max_MA 0.0 GB         CA 94.62 GB         Max_CA 95 GB 
+[2024-04-28 06:30:10,872] [INFO] [utils.py:814:see_memory_usage] CPU Virtual Memory:  used = 102.57 GB, percent = 10.2%
+Parameter Offload: Total persistent parameters: 3018752 in 225 params
+[2024-04-28 06:30:11,175] [INFO] [utils.py:806:see_memory_usage] DeepSpeedZeRoOffload initialize [end]
+[2024-04-28 06:30:11,180] [INFO] [utils.py:807:see_memory_usage] MA 11.39 GB         Max_MA 11.4 GB         CA 94.62 GB         Max_CA 95 GB 
+[2024-04-28 06:30:11,180] [INFO] [utils.py:814:see_memory_usage] CPU Virtual Memory:  used = 102.58 GB, percent = 10.2%
+[2024-04-28 06:30:11,282] [INFO] [utils.py:806:see_memory_usage] Before creating fp16 partitions
+[2024-04-28 06:30:11,286] [INFO] [utils.py:807:see_memory_usage] MA 11.39 GB         Max_MA 0.0 GB         CA 94.62 GB         Max_CA 95 GB 
+[2024-04-28 06:30:11,287] [INFO] [utils.py:814:see_memory_usage] CPU Virtual Memory:  used = 102.58 GB, percent = 10.2%
+[2024-04-28 06:30:11,537] [INFO] [utils.py:806:see_memory_usage] After creating fp16 partitions: 1
+[2024-04-28 06:30:11,542] [INFO] [utils.py:807:see_memory_usage] MA 11.39 GB         Max_MA 11.39 GB         CA 94.62 GB         Max_CA 95 GB 
+[2024-04-28 06:30:11,542] [INFO] [utils.py:814:see_memory_usage] CPU Virtual Memory:  used = 102.58 GB, percent = 10.2%
+[2024-04-28 06:30:11,719] [INFO] [utils.py:806:see_memory_usage] Before initializing optimizer states
+[2024-04-28 06:30:11,724] [INFO] [utils.py:807:see_memory_usage] MA 11.39 GB         Max_MA 0.0 GB         CA 94.62 GB         Max_CA 95 GB 
+[2024-04-28 06:30:11,724] [INFO] [utils.py:814:see_memory_usage] CPU Virtual Memory:  used = 102.62 GB, percent = 10.2%
+[2024-04-28 06:30:11,848] [INFO] [utils.py:806:see_memory_usage] After initializing optimizer states
+[2024-04-28 06:30:11,852] [INFO] [utils.py:807:see_memory_usage] MA 11.4 GB         Max_MA 11.4 GB         CA 94.62 GB         Max_CA 95 GB 
+[2024-04-28 06:30:11,852] [INFO] [utils.py:814:see_memory_usage] CPU Virtual Memory:  used = 102.63 GB, percent = 10.2%
+[2024-04-28 06:30:11,853] [INFO] [stage3.py:475:_setup_for_real_optimizer] optimizer state initialized
+[2024-04-28 06:30:12,291] [INFO] [utils.py:806:see_memory_usage] After initializing ZeRO optimizer
+[2024-04-28 06:30:12,296] [INFO] [utils.py:807:see_memory_usage] MA 11.4 GB         Max_MA 11.4 GB         CA 94.62 GB         Max_CA 95 GB 
+[2024-04-28 06:30:12,296] [INFO] [utils.py:814:see_memory_usage] CPU Virtual Memory:  used = 102.65 GB, percent = 10.2%
+[2024-04-28 06:30:12,297] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Final Optimizer = DeepSpeedZeroOptimizer_Stage3
+[2024-04-28 06:30:12,297] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed using client LR scheduler
+[2024-04-28 06:30:12,297] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed LR Scheduler = None
+[2024-04-28 06:30:12,297] [INFO] [logging.py:96:log_dist] [Rank 0] step=0, skipped=0, lr=[0.0001], mom=[(0.9, 0.999)]
+[2024-04-28 06:30:12,307] [INFO] [config.py:994:print] DeepSpeedEngine configuration:
+[2024-04-28 06:30:12,307] [INFO] [config.py:998:print]   activation_checkpointing_config  {
+    "partition_activations": false, 
+    "contiguous_memory_optimization": false, 
+    "cpu_checkpointing": false, 
+    "number_checkpoints": null, 
+    "synchronize_checkpoint_boundary": false, 
+    "profile": false
+}
+[2024-04-28 06:30:12,307] [INFO] [config.py:998:print]   aio_config ................... {'block_size': 1048576, 'queue_depth': 8, 'thread_count': 1, 'single_submit': False, 'overlap_events': True}
+[2024-04-28 06:30:12,307] [INFO] [config.py:998:print]   amp_enabled .................. False
+[2024-04-28 06:30:12,307] [INFO] [config.py:998:print]   amp_params ................... False
+[2024-04-28 06:30:12,307] [INFO] [config.py:998:print]   autotuning_config ............ {
+    "enabled": false, 
+    "start_step": null, 
+    "end_step": null, 
+    "metric_path": null, 
+    "arg_mappings": null, 
+    "metric": "throughput", 
+    "model_info": null, 
+    "results_dir": "autotuning_results", 
+    "exps_dir": "autotuning_exps", 
+    "overwrite": true, 
+    "fast": true, 
+    "start_profile_step": 3, 
+    "end_profile_step": 5, 
+    "tuner_type": "gridsearch", 
+    "tuner_early_stopping": 5, 
+    "tuner_num_trials": 50, 
+    "model_info_path": null, 
+    "mp_size": 1, 
+    "max_train_batch_size": null, 
+    "min_train_batch_size": 1, 
+    "max_train_micro_batch_size_per_gpu": 1.024000e+03, 
+    "min_train_micro_batch_size_per_gpu": 1, 
+    "num_tuning_micro_batch_sizes": 3
+}
+[2024-04-28 06:30:12,307] [INFO] [config.py:998:print]   bfloat16_accumulate_grads_via_hooks  False
+[2024-04-28 06:30:12,308] [INFO] [config.py:998:print]   bfloat16_enabled ............. True
+[2024-04-28 06:30:12,308] [INFO] [config.py:998:print]   checkpoint_parallel_write_pipeline  False
+[2024-04-28 06:30:12,308] [INFO] [config.py:998:print]   checkpoint_tag_validation_enabled  True
+[2024-04-28 06:30:12,308] [INFO] [config.py:998:print]   checkpoint_tag_validation_fail  False
+[2024-04-28 06:30:12,308] [INFO] [config.py:998:print]   comms_config ................. <deepspeed.comm.config.DeepSpeedCommsConfig object at 0x7f1d5661d180>
+[2024-04-28 06:30:12,308] [INFO] [config.py:998:print]   communication_data_type ...... None
+[2024-04-28 06:30:12,308] [INFO] [config.py:998:print]   compile_config ............... enabled=False backend='inductor' kwargs={}
+[2024-04-28 06:30:12,308] [INFO] [config.py:998:print]   compression_config ........... {'weight_quantization': {'shared_parameters': {'enabled': False, 'quantizer_kernel': False, 'schedule_offset': 0, 'quantize_groups': 1, 'quantize_verbose': False, 'quantization_type': 'symmetric', 'quantize_weight_in_forward': False, 'rounding': 'nearest', 'fp16_mixed_quantize': False, 'quantize_change_ratio': 0.001}, 'different_groups': {}}, 'activation_quantization': {'shared_parameters': {'enabled': False, 'quantization_type': 'symmetric', 'range_calibration': 'dynamic', 'schedule_offset': 1000}, 'different_groups': {}}, 'sparse_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'row_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'head_pruning': {'shared_parameters': {'enabled': False, 'method': 'topk', 'schedule_offset': 1000}, 'different_groups': {}}, 'channel_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'layer_reduction': {'enabled': False}}
+[2024-04-28 06:30:12,308] [INFO] [config.py:998:print]   curriculum_enabled_legacy .... False
+[2024-04-28 06:30:12,308] [INFO] [config.py:998:print]   curriculum_params_legacy ..... False
+[2024-04-28 06:30:12,308] [INFO] [config.py:998:print]   data_efficiency_config ....... {'enabled': False, 'seed': 1234, 'data_sampling': {'enabled': False, 'num_epochs': 1000, 'num_workers': 0, 'curriculum_learning': {'enabled': False}}, 'data_routing': {'enabled': False, 'random_ltd': {'enabled': False, 'layer_token_lr_schedule': {'enabled': False}}}}
+[2024-04-28 06:30:12,308] [INFO] [config.py:998:print]   data_efficiency_enabled ...... False
+[2024-04-28 06:30:12,308] [INFO] [config.py:998:print]   dataloader_drop_last ......... False
+[2024-04-28 06:30:12,308] [INFO] [config.py:998:print]   disable_allgather ............ False
+[2024-04-28 06:30:12,308] [INFO] [config.py:998:print]   dump_state ................... False
+[2024-04-28 06:30:12,308] [INFO] [config.py:998:print]   dynamic_loss_scale_args ...... None
+[2024-04-28 06:30:12,308] [INFO] [config.py:998:print]   eigenvalue_enabled ........... False
+[2024-04-28 06:30:12,308] [INFO] [config.py:998:print]   eigenvalue_gas_boundary_resolution  1
+[2024-04-28 06:30:12,308] [INFO] [config.py:998:print]   eigenvalue_layer_name ........ bert.encoder.layer
+[2024-04-28 06:30:12,308] [INFO] [config.py:998:print]   eigenvalue_layer_num ......... 0
+[2024-04-28 06:30:12,308] [INFO] [config.py:998:print]   eigenvalue_max_iter .......... 100
+[2024-04-28 06:30:12,308] [INFO] [config.py:998:print]   eigenvalue_stability ......... 1e-06
+[2024-04-28 06:30:12,308] [INFO] [config.py:998:print]   eigenvalue_tol ............... 0.01
+[2024-04-28 06:30:12,308] [INFO] [config.py:998:print]   eigenvalue_verbose ........... False
+[2024-04-28 06:30:12,308] [INFO] [config.py:998:print]   elasticity_enabled ........... False
+[2024-04-28 06:30:12,308] [INFO] [config.py:998:print]   flops_profiler_config ........ {
+    "enabled": false, 
+    "recompute_fwd_factor": 0.0, 
+    "profile_step": 1, 
+    "module_depth": -1, 
+    "top_modules": 1, 
+    "detailed": true, 
+    "output_file": null
+}
+[2024-04-28 06:30:12,308] [INFO] [config.py:998:print]   fp16_auto_cast ............... None
+[2024-04-28 06:30:12,308] [INFO] [config.py:998:print]   fp16_enabled ................. False
+[2024-04-28 06:30:12,308] [INFO] [config.py:998:print]   fp16_master_weights_and_gradients  False
+[2024-04-28 06:30:12,308] [INFO] [config.py:998:print]   global_rank .................. 0
+[2024-04-28 06:30:12,308] [INFO] [config.py:998:print]   grad_accum_dtype ............. None
+[2024-04-28 06:30:12,308] [INFO] [config.py:998:print]   gradient_accumulation_steps .. 4
+[2024-04-28 06:30:12,308] [INFO] [config.py:998:print]   gradient_clipping ............ 1.0
+[2024-04-28 06:30:12,308] [INFO] [config.py:998:print]   gradient_predivide_factor .... 1.0
+[2024-04-28 06:30:12,308] [INFO] [config.py:998:print]   hybrid_engine ................ enabled=False max_out_tokens=512 inference_tp_size=1 release_inference_cache=False pin_parameters=True tp_gather_partition_size=8
+[2024-04-28 06:30:12,308] [INFO] [config.py:998:print]   initial_dynamic_scale ........ 1
+[2024-04-28 06:30:12,308] [INFO] [config.py:998:print]   load_universal_checkpoint .... False
+[2024-04-28 06:30:12,308] [INFO] [config.py:998:print]   loss_scale ................... 1.0
+[2024-04-28 06:30:12,308] [INFO] [config.py:998:print]   memory_breakdown ............. False
+[2024-04-28 06:30:12,308] [INFO] [config.py:998:print]   mics_hierarchial_params_gather  False
+[2024-04-28 06:30:12,308] [INFO] [config.py:998:print]   mics_shard_size .............. -1
+[2024-04-28 06:30:12,308] [INFO] [config.py:998:print]   monitor_config ............... tensorboard=TensorBoardConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') wandb=WandbConfig(enabled=False, group=None, team=None, project='deepspeed') csv_monitor=CSVConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') enabled=False
+[2024-04-28 06:30:12,308] [INFO] [config.py:998:print]   nebula_config ................ {
+    "enabled": false, 
+    "persistent_storage_path": null, 
+    "persistent_time_interval": 100, 
+    "num_of_version_in_retention": 2, 
+    "enable_nebula_load": true, 
+    "load_path": null
+}
+[2024-04-28 06:30:12,309] [INFO] [config.py:998:print]   optimizer_legacy_fusion ...... False
+[2024-04-28 06:30:12,309] [INFO] [config.py:998:print]   optimizer_name ............... None
+[2024-04-28 06:30:12,309] [INFO] [config.py:998:print]   optimizer_params ............. None
+[2024-04-28 06:30:12,309] [INFO] [config.py:998:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0, 'pipe_partitioned': True, 'grad_partitioned': True}
+[2024-04-28 06:30:12,309] [INFO] [config.py:998:print]   pld_enabled .................. False
+[2024-04-28 06:30:12,309] [INFO] [config.py:998:print]   pld_params ................... False
+[2024-04-28 06:30:12,309] [INFO] [config.py:998:print]   prescale_gradients ........... False
+[2024-04-28 06:30:12,309] [INFO] [config.py:998:print]   scheduler_name ............... None
+[2024-04-28 06:30:12,309] [INFO] [config.py:998:print]   scheduler_params ............. None
+[2024-04-28 06:30:12,309] [INFO] [config.py:998:print]   seq_parallel_communication_data_type  torch.float32
+[2024-04-28 06:30:12,309] [INFO] [config.py:998:print]   sparse_attention ............. None
+[2024-04-28 06:30:12,309] [INFO] [config.py:998:print]   sparse_gradients_enabled ..... False
+[2024-04-28 06:30:12,309] [INFO] [config.py:998:print]   steps_per_print .............. inf
+[2024-04-28 06:30:12,309] [INFO] [config.py:998:print]   train_batch_size ............. 128
+[2024-04-28 06:30:12,309] [INFO] [config.py:998:print]   train_micro_batch_size_per_gpu  4
+[2024-04-28 06:30:12,309] [INFO] [config.py:998:print]   use_data_before_expert_parallel_  False
+[2024-04-28 06:30:12,309] [INFO] [config.py:998:print]   use_node_local_storage ....... False
+[2024-04-28 06:30:12,309] [INFO] [config.py:998:print]   wall_clock_breakdown ......... False
+[2024-04-28 06:30:12,309] [INFO] [config.py:998:print]   weight_quantization_config ... None
+[2024-04-28 06:30:12,309] [INFO] [config.py:998:print]   world_size ................... 8
+[2024-04-28 06:30:12,309] [INFO] [config.py:998:print]   zero_allow_untested_optimizer  True
+[2024-04-28 06:30:12,309] [INFO] [config.py:998:print]   zero_config .................. stage=3 contiguous_gradients=False reduce_scatter=False reduce_bucket_size=500,000,000 use_multi_rank_bucket_allreduce=True allgather_partitions=True allgather_bucket_size=500,000,000 overlap_comm=False load_from_fp32_weights=True elastic_checkpoint=False offload_param=None offload_optimizer=None sub_group_size=1,000,000,000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=None prefetch_bucket_size=50,000,000 param_persistence_threshold=100,000 model_persistence_threshold=sys.maxsize max_live_parameters=1,000,000,000 max_reuse_distance=1,000,000,000 gather_16bit_weights_on_model_save=True stage3_gather_fp16_weights_on_model_save=False use_all_reduce_for_fetch_params=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False zero_hpz_partition_size=1 zero_quantized_weights=False zero_quantized_nontrainable_weights=False zero_quantized_gradients=False mics_shard_size=-1 mics_hierarchical_params_gather=False memory_efficient_linear=True pipeline_loading_checkpoint=False override_module_apply=True
+[2024-04-28 06:30:12,309] [INFO] [config.py:998:print]   zero_enabled ................. True
+[2024-04-28 06:30:12,309] [INFO] [config.py:998:print]   zero_force_ds_cpu_optimizer .. True
+[2024-04-28 06:30:12,309] [INFO] [config.py:998:print]   zero_optimization_stage ...... 3
+[2024-04-28 06:30:12,309] [INFO] [config.py:984:print_user_config]   json = {
+    "steps_per_print": inf, 
+    "train_batch_size": 128, 
+    "train_micro_batch_size_per_gpu": 4, 
+    "gradient_accumulation_steps": 4, 
+    "bf16": {
+        "enabled": true
+    }, 
+    "gradient_clipping": 1.0, 
+    "zero_optimization": {
+        "stage": 3, 
+        "overlap_comm": false, 
+        "contiguous_gradients": false, 
+        "stage3_gather_16bit_weights_on_model_save": true
+    }, 
+    "fp16": {
+        "enabled": false
+    }, 
+    "zero_allow_untested_optimizer": true
+}
+[INFO|trainer.py:746] 2024-04-28 06:30:12,310 >> ***** Running training *****
+[INFO|trainer.py:747] 2024-04-28 06:30:12,310 >>   Num examples = 12,285
+[INFO|trainer.py:748] 2024-04-28 06:30:12,310 >>   Num Epochs = 1
+[INFO|trainer.py:749] 2024-04-28 06:30:12,310 >>   Instantaneous batch size per device = 4
+[INFO|trainer.py:752] 2024-04-28 06:30:12,310 >>   Total train batch size (w. parallel, distributed & accumulation) = 128
+[INFO|trainer.py:753] 2024-04-28 06:30:12,310 >>   Gradient Accumulation steps = 4
+[INFO|trainer.py:754] 2024-04-28 06:30:12,310 >>   Total optimization steps = 50
+[INFO|trainer.py:755] 2024-04-28 06:30:12,320 >>   Number of trainable parameters = 1,703,936
+{'loss': 9.6074, 'grad_norm': 1120.554931640625, 'learning_rate': 9.8e-05, 'epoch': 0.01, 'memory_allocated (GB)': 11.63, 'max_memory_allocated (GB)': 81.26, 'total_memory_available (GB)': 94.62}
+{'loss': 9.5336, 'grad_norm': 4355.072265625, 'learning_rate': 9.6e-05, 'epoch': 0.02, 'memory_allocated (GB)': 11.63, 'max_memory_allocated (GB)': 81.26, 'total_memory_available (GB)': 94.62}   
+{'loss': 9.8284, 'grad_norm': 2592.415283203125, 'learning_rate': 9.4e-05, 'epoch': 0.03, 'memory_allocated (GB)': 11.63, 'max_memory_allocated (GB)': 81.26, 'total_memory_available (GB)': 94.62}
+{'loss': 9.5889, 'grad_norm': 1993.1483154296875, 'learning_rate': 9.200000000000001e-05, 'epoch': 0.04, 'memory_allocated (GB)': 11.63, 'max_memory_allocated (GB)': 81.26, 'total_memory_available (GB)': 94.62}
+{'loss': 9.5168, 'grad_norm': 3096.748291015625, 'learning_rate': 9e-05, 'epoch': 0.05, 'memory_allocated (GB)': 11.63, 'max_memory_allocated (GB)': 81.26, 'total_memory_available (GB)': 94.62}  
+{'loss': 9.3983, 'grad_norm': 2053.397705078125, 'learning_rate': 8.800000000000001e-05, 'epoch': 0.06, 'memory_allocated (GB)': 11.63, 'max_memory_allocated (GB)': 81.26, 'total_memory_available (GB)': 94.62}
+{'loss': 9.5258, 'grad_norm': 706.4494018554688, 'learning_rate': 8.6e-05, 'epoch': 0.07, 'memory_allocated (GB)': 11.63, 'max_memory_allocated (GB)': 81.26, 'total_memory_available (GB)': 94.62}
+{'loss': 9.4853, 'grad_norm': 1940.8558349609375, 'learning_rate': 8.4e-05, 'epoch': 0.08, 'memory_allocated (GB)': 11.63, 'max_memory_allocated (GB)': 81.26, 'total_memory_available (GB)': 94.62}
+{'loss': 9.5124, 'grad_norm': 1495.47998046875, 'learning_rate': 8.2e-05, 'epoch': 0.09, 'memory_allocated (GB)': 11.63, 'max_memory_allocated (GB)': 81.26, 'total_memory_available (GB)': 94.62} 
+{'loss': 9.6153, 'grad_norm': 3890.47216796875, 'learning_rate': 8e-05, 'epoch': 0.1, 'memory_allocated (GB)': 11.63, 'max_memory_allocated (GB)': 81.26, 'total_memory_available (GB)': 94.62}    
+{'loss': 9.3371, 'grad_norm': 5037.763671875, 'learning_rate': 7.800000000000001e-05, 'epoch': 0.11, 'memory_allocated (GB)': 11.63, 'max_memory_allocated (GB)': 81.26, 'total_memory_available (GB)': 94.62}
+{'loss': 9.3356, 'grad_norm': 4914.60888671875, 'learning_rate': 7.6e-05, 'epoch': 0.12, 'memory_allocated (GB)': 11.63, 'max_memory_allocated (GB)': 81.26, 'total_memory_available (GB)': 94.62} 
+{'loss': 9.2819, 'grad_norm': 523.7423095703125, 'learning_rate': 7.4e-05, 'epoch': 0.14, 'memory_allocated (GB)': 11.63, 'max_memory_allocated (GB)': 81.26, 'total_memory_available (GB)': 94.62}
+{'loss': 9.2412, 'grad_norm': 1392.2279052734375, 'learning_rate': 7.2e-05, 'epoch': 0.15, 'memory_allocated (GB)': 11.63, 'max_memory_allocated (GB)': 81.26, 'total_memory_available (GB)': 94.62}
+{'loss': 9.2849, 'grad_norm': 1506.075439453125, 'learning_rate': 7e-05, 'epoch': 0.16, 'memory_allocated (GB)': 11.63, 'max_memory_allocated (GB)': 81.26, 'total_memory_available (GB)': 94.62}  
+{'loss': 9.2589, 'grad_norm': 3661.475341796875, 'learning_rate': 6.800000000000001e-05, 'epoch': 0.17, 'memory_allocated (GB)': 11.63, 'max_memory_allocated (GB)': 81.26, 'total_memory_available (GB)': 94.62}
+{'loss': 9.1748, 'grad_norm': 780.4290161132812, 'learning_rate': 6.6e-05, 'epoch': 0.18, 'memory_allocated (GB)': 11.63, 'max_memory_allocated (GB)': 81.26, 'total_memory_available (GB)': 94.62}
+{'loss': 9.1118, 'grad_norm': 4026.31103515625, 'learning_rate': 6.400000000000001e-05, 'epoch': 0.19, 'memory_allocated (GB)': 11.63, 'max_memory_allocated (GB)': 81.26, 'total_memory_available (GB)': 94.62}
+{'loss': 9.2206, 'grad_norm': 1911.164794921875, 'learning_rate': 6.2e-05, 'epoch': 0.2, 'memory_allocated (GB)': 11.63, 'max_memory_allocated (GB)': 81.26, 'total_memory_available (GB)': 94.62} 
+{'loss': 8.9733, 'grad_norm': 2193.298095703125, 'learning_rate': 6e-05, 'epoch': 0.21, 'memory_allocated (GB)': 11.63, 'max_memory_allocated (GB)': 81.26, 'total_memory_available (GB)': 94.62}  
+{'loss': 9.0557, 'grad_norm': 1390.9617919921875, 'learning_rate': 5.8e-05, 'epoch': 0.22, 'memory_allocated (GB)': 11.63, 'max_memory_allocated (GB)': 81.26, 'total_memory_available (GB)': 94.62}
+{'loss': 8.9393, 'grad_norm': 756.8422241210938, 'learning_rate': 5.6000000000000006e-05, 'epoch': 0.23, 'memory_allocated (GB)': 11.63, 'max_memory_allocated (GB)': 81.26, 'total_memory_available (GB)': 94.62}
+{'loss': 9.21, 'grad_norm': 1798.19091796875, 'learning_rate': 5.4000000000000005e-05, 'epoch': 0.24, 'memory_allocated (GB)': 11.63, 'max_memory_allocated (GB)': 81.26, 'total_memory_available (GB)': 94.62}
+{'loss': 8.9235, 'grad_norm': 2855.827392578125, 'learning_rate': 5.2000000000000004e-05, 'epoch': 0.25, 'memory_allocated (GB)': 11.63, 'max_memory_allocated (GB)': 81.26, 'total_memory_available (GB)': 94.62}
+{'loss': 8.7899, 'grad_norm': 221.12130737304688, 'learning_rate': 5e-05, 'epoch': 0.26, 'memory_allocated (GB)': 11.63, 'max_memory_allocated (GB)': 81.26, 'total_memory_available (GB)': 94.62} 
+{'loss': 8.7914, 'grad_norm': 1826.4874267578125, 'learning_rate': 4.8e-05, 'epoch': 0.27, 'memory_allocated (GB)': 11.63, 'max_memory_allocated (GB)': 81.26, 'total_memory_available (GB)': 94.62}
+{'loss': 8.6695, 'grad_norm': 10059.353515625, 'learning_rate': 4.600000000000001e-05, 'epoch': 0.28, 'memory_allocated (GB)': 11.63, 'max_memory_allocated (GB)': 81.26, 'total_memory_available (GB)': 94.62}
+{'loss': 8.7002, 'grad_norm': 18286.564453125, 'learning_rate': 4.4000000000000006e-05, 'epoch': 0.29, 'memory_allocated (GB)': 11.63, 'max_memory_allocated (GB)': 81.26, 'total_memory_available (GB)': 94.62}
+{'loss': 8.5611, 'grad_norm': 427.4957275390625, 'learning_rate': 4.2e-05, 'epoch': 0.3, 'memory_allocated (GB)': 11.63, 'max_memory_allocated (GB)': 81.26, 'total_memory_available (GB)': 94.62} 
+{'loss': 8.6766, 'grad_norm': 3792.89013671875, 'learning_rate': 4e-05, 'epoch': 0.31, 'memory_allocated (GB)': 11.63, 'max_memory_allocated (GB)': 81.26, 'total_memory_available (GB)': 94.62}   
+{'loss': 8.4814, 'grad_norm': 1273.7210693359375, 'learning_rate': 3.8e-05, 'epoch': 0.32, 'memory_allocated (GB)': 11.63, 'max_memory_allocated (GB)': 81.26, 'total_memory_available (GB)': 94.62}
+{'loss': 8.5925, 'grad_norm': 419.0399169921875, 'learning_rate': 3.6e-05, 'epoch': 0.33, 'memory_allocated (GB)': 11.63, 'max_memory_allocated (GB)': 81.26, 'total_memory_available (GB)': 94.62}
+{'loss': 8.5068, 'grad_norm': 624.1594848632812, 'learning_rate': 3.4000000000000007e-05, 'epoch': 0.34, 'memory_allocated (GB)': 11.63, 'max_memory_allocated (GB)': 81.26, 'total_memory_available (GB)': 94.62}
+{'loss': 8.4127, 'grad_norm': 22309.462890625, 'learning_rate': 3.2000000000000005e-05, 'epoch': 0.35, 'memory_allocated (GB)': 11.63, 'max_memory_allocated (GB)': 81.26, 'total_memory_available (GB)': 94.62}
+{'loss': 8.4863, 'grad_norm': 7530.4140625, 'learning_rate': 3e-05, 'epoch': 0.36, 'memory_allocated (GB)': 11.63, 'max_memory_allocated (GB)': 81.26, 'total_memory_available (GB)': 94.62}       
+{'loss': 8.5029, 'grad_norm': 1006.12060546875, 'learning_rate': 2.8000000000000003e-05, 'epoch': 0.38, 'memory_allocated (GB)': 11.63, 'max_memory_allocated (GB)': 81.26, 'total_memory_available (GB)': 94.62}
+{'loss': 8.5027, 'grad_norm': 1717.2054443359375, 'learning_rate': 2.6000000000000002e-05, 'epoch': 0.39, 'memory_allocated (GB)': 11.63, 'max_memory_allocated (GB)': 81.26, 'total_memory_available (GB)': 94.62}
+{'loss': 8.4481, 'grad_norm': 447.6829833984375, 'learning_rate': 2.4e-05, 'epoch': 0.4, 'memory_allocated (GB)': 11.63, 'max_memory_allocated (GB)': 81.26, 'total_memory_available (GB)': 94.62} 
+{'loss': 8.7322, 'grad_norm': 1401.7174072265625, 'learning_rate': 2.2000000000000003e-05, 'epoch': 0.41, 'memory_allocated (GB)': 11.63, 'max_memory_allocated (GB)': 81.26, 'total_memory_available (GB)': 94.62}
+{'loss': 8.3564, 'grad_norm': 393.6521911621094, 'learning_rate': 2e-05, 'epoch': 0.42, 'memory_allocated (GB)': 11.63, 'max_memory_allocated (GB)': 81.26, 'total_memory_available (GB)': 94.62}  
+{'loss': 8.5463, 'grad_norm': 2623.0283203125, 'learning_rate': 1.8e-05, 'epoch': 0.43, 'memory_allocated (GB)': 11.63, 'max_memory_allocated (GB)': 81.26, 'total_memory_available (GB)': 94.62}  
+{'loss': 8.4389, 'grad_norm': 1732.0364990234375, 'learning_rate': 1.6000000000000003e-05, 'epoch': 0.44, 'memory_allocated (GB)': 11.63, 'max_memory_allocated (GB)': 81.26, 'total_memory_available (GB)': 94.62}
+{'loss': 8.2445, 'grad_norm': 4552.06591796875, 'learning_rate': 1.4000000000000001e-05, 'epoch': 0.45, 'memory_allocated (GB)': 11.63, 'max_memory_allocated (GB)': 81.26, 'total_memory_available (GB)': 94.62}
+{'loss': 8.3162, 'grad_norm': 749.9473876953125, 'learning_rate': 1.2e-05, 'epoch': 0.46, 'memory_allocated (GB)': 11.63, 'max_memory_allocated (GB)': 81.26, 'total_memory_available (GB)': 94.62}
+{'loss': 8.2897, 'grad_norm': 1214.3154296875, 'learning_rate': 1e-05, 'epoch': 0.47, 'memory_allocated (GB)': 11.63, 'max_memory_allocated (GB)': 81.26, 'total_memory_available (GB)': 94.62}    
+{'loss': 8.327, 'grad_norm': 668.2150268554688, 'learning_rate': 8.000000000000001e-06, 'epoch': 0.48, 'memory_allocated (GB)': 11.63, 'max_memory_allocated (GB)': 81.26, 'total_memory_available (GB)': 94.62}
+{'loss': 8.5077, 'grad_norm': 2516.9921875, 'learning_rate': 6e-06, 'epoch': 0.49, 'memory_allocated (GB)': 11.63, 'max_memory_allocated (GB)': 81.26, 'total_memory_available (GB)': 94.62}       
+{'loss': 8.51, 'grad_norm': 1389.0830078125, 'learning_rate': 4.000000000000001e-06, 'epoch': 0.5, 'memory_allocated (GB)': 11.63, 'max_memory_allocated (GB)': 81.26, 'total_memory_available (GB)': 94.62}
+{'loss': 8.2594, 'grad_norm': 2364.415771484375, 'learning_rate': 2.0000000000000003e-06, 'epoch': 0.51, 'memory_allocated (GB)': 11.63, 'max_memory_allocated (GB)': 81.26, 'total_memory_available (GB)': 94.62}
+{'loss': 8.299, 'grad_norm': 385.8758544921875, 'learning_rate': 0.0, 'epoch': 0.52, 'memory_allocated (GB)': 11.63, 'max_memory_allocated (GB)': 81.26, 'total_memory_available (GB)': 94.62}     
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [11:51<00:00, 13.82s/it][INFO|trainer.py:1037] 2024-04-28 06:42:03,779 >> 
+
+Training completed. Do not forget to share your model on huggingface.co/models =)
+
+
+{'train_runtime': 711.4591, 'train_samples_per_second': 9.195, 'train_steps_per_second': 0.072, 'train_loss': 8.898204174041748, 'epoch': 0.52, 'memory_allocated (GB)': 11.63, 'max_memory_allocated (GB)': 81.26, 'total_memory_available (GB)': 94.62}
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 50/50 [11:51<00:00, 14.23s/it]
+[INFO|trainer.py:1604] 2024-04-28 06:42:52,910 >> Saving model checkpoint to ./mixtral_peft_finetuned_model
+[INFO|configuration_utils.py:728] 2024-04-28 06:42:53,215 >> loading configuration file config.json from cache at /root/.cache/huggingface/hub/models--mistralai--Mixtral-8x7B-v0.1/snapshots/985aa055896a8f943d4a9f2572e6ea1341823841/config.json
+[INFO|configuration_utils.py:791] 2024-04-28 06:42:53,215 >> Model config MixtralConfig {
+  "architectures": [
+    "MixtralForCausalLM"
+  ],
+  "attention_dropout": 0.0,
+  "bos_token_id": 1,
+  "eos_token_id": 2,
+  "hidden_act": "silu",
+  "hidden_size": 4096,
+  "initializer_range": 0.02,
+  "intermediate_size": 14336,
+  "max_position_embeddings": 32768,
+  "model_type": "mixtral",
+  "num_attention_heads": 32,
+  "num_experts_per_tok": 2,
+  "num_hidden_layers": 32,
+  "num_key_value_heads": 8,
+  "num_local_experts": 8,
+  "output_router_logits": false,
+  "rms_norm_eps": 1e-05,
+  "rope_theta": 1000000.0,
+  "router_aux_loss_coef": 0.02,
+  "sliding_window": null,
+  "tie_word_embeddings": false,
+  "torch_dtype": "bfloat16",
+  "transformers_version": "4.38.2",
+  "use_cache": true,
+  "vocab_size": 32000
+}
+
+[INFO|tokenization_utils_base.py:2459] 2024-04-28 06:42:53,225 >> tokenizer config file saved in ./mixtral_peft_finetuned_model/tokenizer_config.json
+[INFO|tokenization_utils_base.py:2468] 2024-04-28 06:42:53,225 >> Special tokens file saved in ./mixtral_peft_finetuned_model/special_tokens_map.json
+[INFO|configuration_utils.py:113] 2024-04-28 06:42:53,254 >> Configuration saved in ./mixtral_peft_finetuned_model/gaudi_config.json
+***** train metrics *****
+  epoch                       =       0.52
+  max_memory_allocated (GB)   =      81.26
+  memory_allocated (GB)       =      11.63
+  total_memory_available (GB) =      94.62
+  train_loss                  =     8.8982
+  train_runtime               = 0:11:51.45
+  train_samples_per_second    =      9.195
+  train_steps_per_second      =      0.072
+[2024-04-28 06:43:01,660] [INFO] [launch.py:347:main] Process 37685 exits successfully.
+[2024-04-28 06:43:01,660] [INFO] [launch.py:347:main] Process 37686 exits successfully.
+[2024-04-28 06:43:01,660] [INFO] [launch.py:347:main] Process 37688 exits successfully.
+[2024-04-28 06:43:01,660] [INFO] [launch.py:347:main] Process 37691 exits successfully.
+[2024-04-28 06:43:01,660] [INFO] [launch.py:347:main] Process 37690 exits successfully.
+[2024-04-28 06:43:01,660] [INFO] [launch.py:347:main] Process 37689 exits successfully.
+[2024-04-28 06:43:01,661] [INFO] [launch.py:347:main] Process 37687 exits successfully.
+[2024-04-28 06:43:03,663] [INFO] [launch.py:347:main] Process 37684 exits successfully.
