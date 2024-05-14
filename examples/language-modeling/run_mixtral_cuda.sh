@@ -9,12 +9,12 @@ accelerate launch --config_file "deepspeed_config_z3_qlora.yaml" run_lora_clm.py
 	--dataset_name tatsu-lab/alpaca \
 	--bf16 True \
 	--dataset_concatenation \
-	--per_device_train_batch_size 2 \
+	--per_device_train_batch_size 12 \
     	--per_device_eval_batch_size 8 \
     	--gradient_accumulation_steps 1 \
 	--gradient_checkpointing True\
 	--use_reentrant True \
-	--max_seq_len 512 \
+	--max_seq_len 2048 \
     	--do_train \
      	--learning_rate 1e-4 \
 	--logging_steps 1 \
@@ -29,6 +29,5 @@ accelerate launch --config_file "deepspeed_config_z3_qlora.yaml" run_lora_clm.py
 	--use_4bit_quantization True \
         --use_nested_quant True \
         --bnb_4bit_compute_dtype "bfloat16" \
-        --bnb_4bit_quant_storage_dtype "bfloat16" \
-	--max_steps 5
+        --bnb_4bit_quant_storage_dtype "bfloat16"
 

@@ -1,0 +1,777 @@
+[2024-05-14 08:08:11,640] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+1
+[2024-05-14 08:08:29,912] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+[93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+[93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.3
+[93m [WARNING] [0m using untested triton version (3.0.0), only 1.0.0 is known to be compatible
+[2024-05-14 08:08:30,296] [INFO] [comm.py:637:init_distributed] cdb=None
+05/14/2024 08:08:30 - WARNING - __main__ -   Process rank: 6, device: cuda:6, distributed training: True, 16-bits training: True
+1
+[2024-05-14 08:08:31,855] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+1
+[93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+[93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+[93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.3
+[93m [WARNING] [0m using untested triton version (3.0.0), only 1.0.0 is known to be compatible
+[2024-05-14 08:08:32,019] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+1
+[2024-05-14 08:08:32,085] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+1
+1
+[93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+[93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.3
+[93m [WARNING] [0m using untested triton version (3.0.0), only 1.0.0 is known to be compatible
+1
+[2024-05-14 08:08:32,216] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-05-14 08:08:32,217] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+[93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+[93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[2024-05-14 08:08:32,235] [INFO] [comm.py:637:init_distributed] cdb=None
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.3
+[93m [WARNING] [0m using untested triton version (3.0.0), only 1.0.0 is known to be compatible
+[2024-05-14 08:08:32,274] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+[93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+[93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+[93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+[93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.3
+[93m [WARNING] [0m using untested triton version (3.0.0), only 1.0.0 is known to be compatible
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.3
+[93m [WARNING] [0m using untested triton version (3.0.0), only 1.0.0 is known to be compatible
+1
+[2024-05-14 08:08:32,401] [INFO] [comm.py:637:init_distributed] cdb=None
+[93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+[93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+[93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.3
+[93m [WARNING] [0m using untested triton version (3.0.0), only 1.0.0 is known to be compatible
+[2024-05-14 08:08:32,450] [INFO] [real_accelerator.py:203:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2024-05-14 08:08:32,467] [INFO] [comm.py:637:init_distributed] cdb=None
+[93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+[93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+[93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[2024-05-14 08:08:32,599] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-05-14 08:08:32,599] [INFO] [comm.py:637:init_distributed] cdb=None
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.3
+[93m [WARNING] [0m using untested triton version (3.0.0), only 1.0.0 is known to be compatible
+[2024-05-14 08:08:32,655] [INFO] [comm.py:637:init_distributed] cdb=None
+[2024-05-14 08:08:32,655] [INFO] [comm.py:668:init_distributed] Initializing TorchBackend in DeepSpeed with backend nccl
+[2024-05-14 08:08:32,830] [INFO] [comm.py:637:init_distributed] cdb=None
+05/14/2024 08:08:33 - WARNING - __main__ -   Process rank: 5, device: cuda:5, distributed training: True, 16-bits training: True
+05/14/2024 08:08:33 - WARNING - __main__ -   Process rank: 0, device: cuda:0, distributed training: True, 16-bits training: True
+05/14/2024 08:08:33 - INFO - __main__ -   Training/evaluation parameters TrainingArguments(
+_n_gpu=1,
+accelerator_config={'split_batches': False, 'dispatch_batches': None, 'even_batches': True, 'use_seedable_sampler': True, 'gradient_accumulation_kwargs': None},
+adafactor=False,
+adam_beta1=0.9,
+adam_beta2=0.999,
+adam_epsilon=1e-08,
+auto_find_batch_size=False,
+bf16=True,
+bf16_full_eval=False,
+data_seed=None,
+dataloader_drop_last=False,
+dataloader_num_workers=0,
+dataloader_persistent_workers=False,
+dataloader_pin_memory=True,
+dataloader_prefetch_factor=None,
+ddp_backend=None,
+ddp_broadcast_buffers=None,
+ddp_bucket_cap_mb=None,
+ddp_find_unused_parameters=None,
+ddp_timeout=1800,
+debug=[],
+deepspeed=None,
+disable_tqdm=False,
+dispatch_batches=None,
+do_eval=False,
+do_predict=False,
+do_train=True,
+eval_accumulation_steps=None,
+eval_delay=0,
+eval_do_concat_batches=True,
+eval_steps=None,
+evaluation_strategy=no,
+fp16=False,
+fp16_backend=auto,
+fp16_full_eval=False,
+fp16_opt_level=O1,
+fsdp=[],
+fsdp_config={'min_num_params': 0, 'xla': False, 'xla_fsdp_v2': False, 'xla_fsdp_grad_ckpt': False},
+fsdp_min_num_params=0,
+fsdp_transformer_layer_cls_to_wrap=None,
+full_determinism=False,
+gradient_accumulation_steps=1,
+gradient_checkpointing=True,
+gradient_checkpointing_kwargs=None,
+greater_is_better=None,
+group_by_length=False,
+half_precision_backend=auto,
+hub_always_push=False,
+hub_model_id=None,
+hub_private_repo=False,
+hub_strategy=every_save,
+hub_token=<HUB_TOKEN>,
+ignore_data_skip=False,
+include_inputs_for_metrics=False,
+include_num_input_tokens_seen=False,
+include_tokens_per_second=False,
+jit_mode_eval=False,
+label_names=None,
+label_smoothing_factor=0.0,
+learning_rate=0.0001,
+length_column_name=length,
+load_best_model_at_end=False,
+local_rank=0,
+log_level=info,
+log_level_replica=warning,
+log_on_each_node=True,
+logging_dir=./mixtral_peft_finetuned_model/runs/May14_08-08-32_f3d382a672b0,
+logging_first_step=False,
+logging_nan_inf_filter=True,
+logging_steps=1.0,
+logging_strategy=steps,
+lr_scheduler_kwargs={},
+lr_scheduler_type=linear,
+max_grad_norm=1.0,
+max_steps=-1,
+metric_for_best_model=None,
+mp_parameters=,
+neftune_noise_alpha=None,
+no_cuda=False,
+num_train_epochs=3.0,
+optim=adamw_torch,
+optim_args=None,
+optim_target_modules=None,
+output_dir=./mixtral_peft_finetuned_model,
+overwrite_output_dir=True,
+past_index=-1,
+per_device_eval_batch_size=8,
+per_device_train_batch_size=12,
+prediction_loss_only=False,
+push_to_hub=False,
+push_to_hub_model_id=None,
+push_to_hub_organization=None,
+push_to_hub_token=<PUSH_TO_HUB_TOKEN>,
+ray_scope=last,
+remove_unused_columns=True,
+report_to=['tensorboard'],
+resume_from_checkpoint=None,
+run_name=./mixtral_peft_finetuned_model,
+save_on_each_node=False,
+save_only_model=False,
+save_safetensors=True,
+save_steps=500,
+save_strategy=steps,
+save_total_limit=None,
+seed=42,
+skip_memory_metrics=True,
+split_batches=None,
+tf32=None,
+torch_compile=False,
+torch_compile_backend=None,
+torch_compile_mode=None,
+torchdynamo=None,
+tpu_metrics_debug=False,
+tpu_num_cores=None,
+use_cpu=False,
+use_ipex=False,
+use_legacy_prediction_loop=False,
+use_mps_device=False,
+warmup_ratio=0.0,
+warmup_steps=0,
+weight_decay=0.0,
+)
+05/14/2024 08:08:34 - WARNING - __main__ -   Process rank: 1, device: cuda:1, distributed training: True, 16-bits training: True
+05/14/2024 08:08:34 - WARNING - __main__ -   Process rank: 3, device: cuda:3, distributed training: True, 16-bits training: True
+05/14/2024 08:08:34 - WARNING - __main__ -   Process rank: 7, device: cuda:7, distributed training: True, 16-bits training: True
+05/14/2024 08:08:34 - WARNING - __main__ -   Process rank: 2, device: cuda:2, distributed training: True, 16-bits training: True
+05/14/2024 08:08:34 - WARNING - __main__ -   Process rank: 4, device: cuda:4, distributed training: True, 16-bits training: True
+MixtralConfig {
+  "_name_or_path": "mistralai/Mixtral-8x7B-v0.1",
+  "architectures": [
+    "MixtralForCausalLM"
+  ],
+  "attention_dropout": 0.0,
+  "bos_token_id": 1,
+  "eos_token_id": 2,
+  "hidden_act": "silu",
+  "hidden_size": 4096,
+  "initializer_range": 0.02,
+  "intermediate_size": 14336,
+  "max_position_embeddings": 32768,
+  "model_type": "mixtral",
+  "num_attention_heads": 32,
+  "num_experts_per_tok": 2,
+  "num_hidden_layers": 32,
+  "num_key_value_heads": 8,
+  "num_local_experts": 8,
+  "output_router_logits": false,
+  "rms_norm_eps": 1e-05,
+  "rope_theta": 1000000.0,
+  "router_aux_loss_coef": 0.02,
+  "router_jitter_noise": 0.0,
+  "sliding_window": null,
+  "tie_word_embeddings": false,
+  "torch_dtype": "bfloat16",
+  "transformers_version": "4.40.2",
+  "use_cache": false,
+  "vocab_size": 32000
+}
+
+MixtralConfig {
+  "_name_or_path": "mistralai/Mixtral-8x7B-v0.1",
+  "architectures": [
+    "MixtralForCausalLM"
+  ],
+  "attention_dropout": 0.0,
+  "bos_token_id": 1,
+  "eos_token_id": 2,
+  "hidden_act": "silu",
+  "hidden_size": 4096,
+  "initializer_range": 0.02,
+  "intermediate_size": 14336,
+  "max_position_embeddings": 32768,
+  "model_type": "mixtral",
+  "num_attention_heads": 32,
+  "num_experts_per_tok": 2,
+  "num_hidden_layers": 32,
+  "num_key_value_heads": 8,
+  "num_local_experts": 8,
+  "output_router_logits": false,
+  "rms_norm_eps": 1e-05,
+  "rope_theta": 1000000.0,
+  "router_aux_loss_coef": 0.02,
+  "router_jitter_noise": 0.0,
+  "sliding_window": null,
+  "tie_word_embeddings": false,
+  "torch_dtype": "bfloat16",
+  "transformers_version": "4.40.2",
+  "use_cache": false,
+  "vocab_size": 32000
+}
+
+MixtralConfig {
+  "_name_or_path": "mistralai/Mixtral-8x7B-v0.1",
+  "architectures": [
+    "MixtralForCausalLM"
+  ],
+  "attention_dropout": 0.0,
+  "bos_token_id": 1,
+  "eos_token_id": 2,
+  "hidden_act": "silu",
+  "hidden_size": 4096,
+  "initializer_range": 0.02,
+  "intermediate_size": 14336,
+  "max_position_embeddings": 32768,
+  "model_type": "mixtral",
+  "num_attention_heads": 32,
+  "num_experts_per_tok": 2,
+  "num_hidden_layers": 32,
+  "num_key_value_heads": 8,
+  "num_local_experts": 8,
+  "output_router_logits": false,
+  "rms_norm_eps": 1e-05,
+  "rope_theta": 1000000.0,
+  "router_aux_loss_coef": 0.02,
+  "router_jitter_noise": 0.0,
+  "sliding_window": null,
+  "tie_word_embeddings": false,
+  "torch_dtype": "bfloat16",
+  "transformers_version": "4.40.2",
+  "use_cache": false,
+  "vocab_size": 32000
+}
+
+MixtralConfig {
+  "_name_or_path": "mistralai/Mixtral-8x7B-v0.1",
+  "architectures": [
+    "MixtralForCausalLM"
+  ],
+  "attention_dropout": 0.0,
+  "bos_token_id": 1,
+  "eos_token_id": 2,
+  "hidden_act": "silu",
+  "hidden_size": 4096,
+  "initializer_range": 0.02,
+  "intermediate_size": 14336,
+  "max_position_embeddings": 32768,
+  "model_type": "mixtral",
+  "num_attention_heads": 32,
+  "num_experts_per_tok": 2,
+  "num_hidden_layers": 32,
+  "num_key_value_heads": 8,
+  "num_local_experts": 8,
+  "output_router_logits": false,
+  "rms_norm_eps": 1e-05,
+  "rope_theta": 1000000.0,
+  "router_aux_loss_coef": 0.02,
+  "router_jitter_noise": 0.0,
+  "sliding_window": null,
+  "tie_word_embeddings": false,
+  "torch_dtype": "bfloat16",
+  "transformers_version": "4.40.2",
+  "use_cache": false,
+  "vocab_size": 32000
+}
+
+MixtralConfig {
+  "_name_or_path": "mistralai/Mixtral-8x7B-v0.1",
+  "architectures": [
+    "MixtralForCausalLM"
+  ],
+  "attention_dropout": 0.0,
+  "bos_token_id": 1,
+  "eos_token_id": 2,
+  "hidden_act": "silu",
+  "hidden_size": 4096,
+  "initializer_range": 0.02,
+  "intermediate_size": 14336,
+  "max_position_embeddings": 32768,
+  "model_type": "mixtral",
+  "num_attention_heads": 32,
+  "num_experts_per_tok": 2,
+  "num_hidden_layers": 32,
+  "num_key_value_heads": 8,
+  "num_local_experts": 8,
+  "output_router_logits": false,
+  "rms_norm_eps": 1e-05,
+  "rope_theta": 1000000.0,
+  "router_aux_loss_coef": 0.02,
+  "router_jitter_noise": 0.0,
+  "sliding_window": null,
+  "tie_word_embeddings": false,
+  "torch_dtype": "bfloat16",
+  "transformers_version": "4.40.2",
+  "use_cache": false,
+  "vocab_size": 32000
+}
+
+MixtralConfig {
+  "_name_or_path": "mistralai/Mixtral-8x7B-v0.1",
+  "architectures": [
+    "MixtralForCausalLM"
+  ],
+  "attention_dropout": 0.0,
+  "bos_token_id": 1,
+  "eos_token_id": 2,
+  "hidden_act": "silu",
+  "hidden_size": 4096,
+  "initializer_range": 0.02,
+  "intermediate_size": 14336,
+  "max_position_embeddings": 32768,
+  "model_type": "mixtral",
+  "num_attention_heads": 32,
+  "num_experts_per_tok": 2,
+  "num_hidden_layers": 32,
+  "num_key_value_heads": 8,
+  "num_local_experts": 8,
+  "output_router_logits": false,
+  "rms_norm_eps": 1e-05,
+  "rope_theta": 1000000.0,
+  "router_aux_loss_coef": 0.02,
+  "router_jitter_noise": 0.0,
+  "sliding_window": null,
+  "tie_word_embeddings": false,
+  "torch_dtype": "bfloat16",
+  "transformers_version": "4.40.2",
+  "use_cache": false,
+  "vocab_size": 32000
+}
+
+MixtralConfig {
+  "_name_or_path": "mistralai/Mixtral-8x7B-v0.1",
+  "architectures": [
+    "MixtralForCausalLM"
+  ],
+  "attention_dropout": 0.0,
+  "bos_token_id": 1,
+  "eos_token_id": 2,
+  "hidden_act": "silu",
+  "hidden_size": 4096,
+  "initializer_range": 0.02,
+  "intermediate_size": 14336,
+  "max_position_embeddings": 32768,
+  "model_type": "mixtral",
+  "num_attention_heads": 32,
+  "num_experts_per_tok": 2,
+  "num_hidden_layers": 32,
+  "num_key_value_heads": 8,
+  "num_local_experts": 8,
+  "output_router_logits": false,
+  "rms_norm_eps": 1e-05,
+  "rope_theta": 1000000.0,
+  "router_aux_loss_coef": 0.02,
+  "router_jitter_noise": 0.0,
+  "sliding_window": null,
+  "tie_word_embeddings": false,
+  "torch_dtype": "bfloat16",
+  "transformers_version": "4.40.2",
+  "use_cache": false,
+  "vocab_size": 32000
+}
+
+MixtralConfig {
+  "_name_or_path": "mistralai/Mixtral-8x7B-v0.1",
+  "architectures": [
+    "MixtralForCausalLM"
+  ],
+  "attention_dropout": 0.0,
+  "bos_token_id": 1,
+  "eos_token_id": 2,
+  "hidden_act": "silu",
+  "hidden_size": 4096,
+  "initializer_range": 0.02,
+  "intermediate_size": 14336,
+  "max_position_embeddings": 32768,
+  "model_type": "mixtral",
+  "num_attention_heads": 32,
+  "num_experts_per_tok": 2,
+  "num_hidden_layers": 32,
+  "num_key_value_heads": 8,
+  "num_local_experts": 8,
+  "output_router_logits": false,
+  "rms_norm_eps": 1e-05,
+  "rope_theta": 1000000.0,
+  "router_aux_loss_coef": 0.02,
+  "router_jitter_noise": 0.0,
+  "sliding_window": null,
+  "tie_word_embeddings": false,
+  "torch_dtype": "bfloat16",
+  "transformers_version": "4.40.2",
+  "use_cache": false,
+  "vocab_size": 32000
+}
+
+05/14/2024 08:09:54 - INFO - __main__ -   Using data collator of type DataCollatorForLanguageModeling
+trainable params: 1,703,936 || all params: 46,704,496,640 || trainable%: 0.0036
+trainable params: 1,703,936 || all params: 46,704,496,640 || trainable%: 0.0036
+trainable params: 1,703,936 || all params: 46,704,496,640 || trainable%: 0.0036
+trainable params: 1,703,936 || all params: 46,704,496,640 || trainable%: 0.0036
+trainable params: 1,703,936 || all params: 46,704,496,640 || trainable%: 0.0036
+trainable params: 1,703,936 || all params: 46,704,496,640 || trainable%: 0.0036
+trainable params: 1,703,936 || all params: 46,704,496,640 || trainable%: 0.0036
+trainable params: 1,703,936 || all params: 46,704,496,640 || trainable%: 0.0036
+[2024-05-14 08:09:55,294] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed info: version=0.14.2, git-hash=unknown, git-branch=unknown
+[2024-05-14 08:10:18,873] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Flops Profiler Enabled: False
+[2024-05-14 08:10:18,880] [INFO] [logging.py:96:log_dist] [Rank 0] Using client Optimizer as basic optimizer
+[2024-05-14 08:10:18,880] [INFO] [logging.py:96:log_dist] [Rank 0] Removing param_group that has no 'params' in the basic Optimizer
+[2024-05-14 08:10:18,910] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Basic Optimizer = AdamW
+[2024-05-14 08:10:18,910] [INFO] [utils.py:56:is_zero_supported_optimizer] Checking ZeRO support for optimizer=AdamW type=<class 'torch.optim.adamw.AdamW'>
+[2024-05-14 08:10:18,910] [INFO] [logging.py:96:log_dist] [Rank 0] Creating fp16 ZeRO stage 3 optimizer, MiCS is enabled False, Hierarchical params gather False
+[2024-05-14 08:10:18,910] [INFO] [logging.py:96:log_dist] [Rank 0] Creating torch.bfloat16 ZeRO stage 3 optimizer
+[2024-05-14 08:10:19,164] [INFO] [utils.py:779:see_memory_usage] Stage 3 initialize beginning
+[2024-05-14 08:10:19,165] [INFO] [utils.py:780:see_memory_usage] MA 23.3 GB         Max_MA 23.3 GB         CA 23.49 GB         Max_CA 23 GB 
+[2024-05-14 08:10:19,166] [INFO] [utils.py:787:see_memory_usage] CPU Virtual Memory:  used = 72.63 GB, percent = 4.1%
+[2024-05-14 08:10:19,176] [INFO] [stage3.py:130:__init__] Reduce bucket size 500,000,000
+[2024-05-14 08:10:19,176] [INFO] [stage3.py:131:__init__] Prefetch bucket size 50,000,000
+[2024-05-14 08:10:19,329] [INFO] [utils.py:779:see_memory_usage] DeepSpeedZeRoOffload initialize [begin]
+[2024-05-14 08:10:19,330] [INFO] [utils.py:780:see_memory_usage] MA 23.3 GB         Max_MA 23.3 GB         CA 23.49 GB         Max_CA 23 GB 
+[2024-05-14 08:10:19,330] [INFO] [utils.py:787:see_memory_usage] CPU Virtual Memory:  used = 72.65 GB, percent = 4.1%
+Parameter Offload: Total persistent parameters: 2232320 in 225 params
+[2024-05-14 08:10:19,990] [INFO] [utils.py:779:see_memory_usage] DeepSpeedZeRoOffload initialize [end]
+[2024-05-14 08:10:19,991] [INFO] [utils.py:780:see_memory_usage] MA 3.98 GB         Max_MA 23.34 GB         CA 23.58 GB         Max_CA 24 GB 
+[2024-05-14 08:10:19,992] [INFO] [utils.py:787:see_memory_usage] CPU Virtual Memory:  used = 72.72 GB, percent = 4.1%
+[2024-05-14 08:10:20,177] [INFO] [utils.py:779:see_memory_usage] Before creating fp16 partitions
+[2024-05-14 08:10:20,178] [INFO] [utils.py:780:see_memory_usage] MA 3.98 GB         Max_MA 3.98 GB         CA 23.58 GB         Max_CA 24 GB 
+[2024-05-14 08:10:20,179] [INFO] [utils.py:787:see_memory_usage] CPU Virtual Memory:  used = 72.72 GB, percent = 4.1%
+[2024-05-14 08:10:20,677] [INFO] [utils.py:779:see_memory_usage] After creating fp16 partitions: 1
+[2024-05-14 08:10:20,678] [INFO] [utils.py:780:see_memory_usage] MA 3.98 GB         Max_MA 3.98 GB         CA 4.31 GB         Max_CA 24 GB 
+[2024-05-14 08:10:20,679] [INFO] [utils.py:787:see_memory_usage] CPU Virtual Memory:  used = 72.72 GB, percent = 4.1%
+[2024-05-14 08:10:20,851] [INFO] [utils.py:779:see_memory_usage] Before creating fp32 partitions
+[2024-05-14 08:10:20,852] [INFO] [utils.py:780:see_memory_usage] MA 3.98 GB         Max_MA 3.98 GB         CA 4.31 GB         Max_CA 4 GB 
+[2024-05-14 08:10:20,852] [INFO] [utils.py:787:see_memory_usage] CPU Virtual Memory:  used = 72.72 GB, percent = 4.1%
+[2024-05-14 08:10:21,076] [INFO] [utils.py:779:see_memory_usage] After creating fp32 partitions
+[2024-05-14 08:10:21,077] [INFO] [utils.py:780:see_memory_usage] MA 3.98 GB         Max_MA 3.98 GB         CA 4.31 GB         Max_CA 4 GB 
+[2024-05-14 08:10:21,077] [INFO] [utils.py:787:see_memory_usage] CPU Virtual Memory:  used = 72.72 GB, percent = 4.1%
+[2024-05-14 08:10:21,248] [INFO] [utils.py:779:see_memory_usage] Before initializing optimizer states
+[2024-05-14 08:10:21,249] [INFO] [utils.py:780:see_memory_usage] MA 3.98 GB         Max_MA 3.98 GB         CA 4.31 GB         Max_CA 4 GB 
+[2024-05-14 08:10:21,249] [INFO] [utils.py:787:see_memory_usage] CPU Virtual Memory:  used = 72.72 GB, percent = 4.1%
+[2024-05-14 08:10:21,419] [INFO] [utils.py:779:see_memory_usage] After initializing optimizer states
+[2024-05-14 08:10:21,420] [INFO] [utils.py:780:see_memory_usage] MA 3.98 GB         Max_MA 3.98 GB         CA 4.31 GB         Max_CA 4 GB 
+[2024-05-14 08:10:21,421] [INFO] [utils.py:787:see_memory_usage] CPU Virtual Memory:  used = 72.72 GB, percent = 4.1%
+[2024-05-14 08:10:21,421] [INFO] [stage3.py:486:_setup_for_real_optimizer] optimizer state initialized
+[2024-05-14 08:10:21,660] [INFO] [utils.py:779:see_memory_usage] After initializing ZeRO optimizer
+[2024-05-14 08:10:21,661] [INFO] [utils.py:780:see_memory_usage] MA 3.98 GB         Max_MA 3.98 GB         CA 4.31 GB         Max_CA 4 GB 
+[2024-05-14 08:10:21,661] [INFO] [utils.py:787:see_memory_usage] CPU Virtual Memory:  used = 72.75 GB, percent = 4.1%
+[2024-05-14 08:10:21,662] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed Final Optimizer = AdamW
+[2024-05-14 08:10:21,662] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed using client LR scheduler
+[2024-05-14 08:10:21,662] [INFO] [logging.py:96:log_dist] [Rank 0] DeepSpeed LR Scheduler = None
+[2024-05-14 08:10:21,662] [INFO] [logging.py:96:log_dist] [Rank 0] step=0, skipped=0, lr=[0.0001], mom=[(0.9, 0.999)]
+[2024-05-14 08:10:21,668] [INFO] [config.py:996:print] DeepSpeedEngine configuration:
+[2024-05-14 08:10:21,668] [INFO] [config.py:1000:print]   activation_checkpointing_config  {
+    "partition_activations": false, 
+    "contiguous_memory_optimization": false, 
+    "cpu_checkpointing": false, 
+    "number_checkpoints": null, 
+    "synchronize_checkpoint_boundary": false, 
+    "profile": false
+}
+[2024-05-14 08:10:21,668] [INFO] [config.py:1000:print]   aio_config ................... {'block_size': 1048576, 'queue_depth': 8, 'thread_count': 1, 'single_submit': False, 'overlap_events': True}
+[2024-05-14 08:10:21,668] [INFO] [config.py:1000:print]   amp_enabled .................. False
+[2024-05-14 08:10:21,668] [INFO] [config.py:1000:print]   amp_params ................... False
+[2024-05-14 08:10:21,669] [INFO] [config.py:1000:print]   autotuning_config ............ {
+    "enabled": false, 
+    "start_step": null, 
+    "end_step": null, 
+    "metric_path": null, 
+    "arg_mappings": null, 
+    "metric": "throughput", 
+    "model_info": null, 
+    "results_dir": "autotuning_results", 
+    "exps_dir": "autotuning_exps", 
+    "overwrite": true, 
+    "fast": true, 
+    "start_profile_step": 3, 
+    "end_profile_step": 5, 
+    "tuner_type": "gridsearch", 
+    "tuner_early_stopping": 5, 
+    "tuner_num_trials": 50, 
+    "model_info_path": null, 
+    "mp_size": 1, 
+    "max_train_batch_size": null, 
+    "min_train_batch_size": 1, 
+    "max_train_micro_batch_size_per_gpu": 1.024000e+03, 
+    "min_train_micro_batch_size_per_gpu": 1, 
+    "num_tuning_micro_batch_sizes": 3
+}
+[2024-05-14 08:10:21,669] [INFO] [config.py:1000:print]   bfloat16_enabled ............. True
+[2024-05-14 08:10:21,669] [INFO] [config.py:1000:print]   bfloat16_immediate_grad_update  False
+[2024-05-14 08:10:21,669] [INFO] [config.py:1000:print]   checkpoint_parallel_write_pipeline  False
+[2024-05-14 08:10:21,669] [INFO] [config.py:1000:print]   checkpoint_tag_validation_enabled  True
+[2024-05-14 08:10:21,669] [INFO] [config.py:1000:print]   checkpoint_tag_validation_fail  False
+[2024-05-14 08:10:21,669] [INFO] [config.py:1000:print]   comms_config ................. <deepspeed.comm.config.DeepSpeedCommsConfig object at 0x7f2334096c20>
+[2024-05-14 08:10:21,669] [INFO] [config.py:1000:print]   communication_data_type ...... None
+[2024-05-14 08:10:21,669] [INFO] [config.py:1000:print]   compile_config ............... enabled=False backend='inductor' kwargs={}
+[2024-05-14 08:10:21,669] [INFO] [config.py:1000:print]   compression_config ........... {'weight_quantization': {'shared_parameters': {'enabled': False, 'quantizer_kernel': False, 'schedule_offset': 0, 'quantize_groups': 1, 'quantize_verbose': False, 'quantization_type': 'symmetric', 'quantize_weight_in_forward': False, 'rounding': 'nearest', 'fp16_mixed_quantize': False, 'quantize_change_ratio': 0.001}, 'different_groups': {}}, 'activation_quantization': {'shared_parameters': {'enabled': False, 'quantization_type': 'symmetric', 'range_calibration': 'dynamic', 'schedule_offset': 1000}, 'different_groups': {}}, 'sparse_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'row_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'head_pruning': {'shared_parameters': {'enabled': False, 'method': 'topk', 'schedule_offset': 1000}, 'different_groups': {}}, 'channel_pruning': {'shared_parameters': {'enabled': False, 'method': 'l1', 'schedule_offset': 1000}, 'different_groups': {}}, 'layer_reduction': {'enabled': False}}
+[2024-05-14 08:10:21,669] [INFO] [config.py:1000:print]   curriculum_enabled_legacy .... False
+[2024-05-14 08:10:21,669] [INFO] [config.py:1000:print]   curriculum_params_legacy ..... False
+[2024-05-14 08:10:21,669] [INFO] [config.py:1000:print]   data_efficiency_config ....... {'enabled': False, 'seed': 1234, 'data_sampling': {'enabled': False, 'num_epochs': 1000, 'num_workers': 0, 'curriculum_learning': {'enabled': False}}, 'data_routing': {'enabled': False, 'random_ltd': {'enabled': False, 'layer_token_lr_schedule': {'enabled': False}}}}
+[2024-05-14 08:10:21,669] [INFO] [config.py:1000:print]   data_efficiency_enabled ...... False
+[2024-05-14 08:10:21,669] [INFO] [config.py:1000:print]   dataloader_drop_last ......... False
+[2024-05-14 08:10:21,669] [INFO] [config.py:1000:print]   disable_allgather ............ False
+[2024-05-14 08:10:21,669] [INFO] [config.py:1000:print]   dump_state ................... False
+[2024-05-14 08:10:21,669] [INFO] [config.py:1000:print]   dynamic_loss_scale_args ...... None
+[2024-05-14 08:10:21,669] [INFO] [config.py:1000:print]   eigenvalue_enabled ........... False
+[2024-05-14 08:10:21,669] [INFO] [config.py:1000:print]   eigenvalue_gas_boundary_resolution  1
+[2024-05-14 08:10:21,669] [INFO] [config.py:1000:print]   eigenvalue_layer_name ........ bert.encoder.layer
+[2024-05-14 08:10:21,669] [INFO] [config.py:1000:print]   eigenvalue_layer_num ......... 0
+[2024-05-14 08:10:21,670] [INFO] [config.py:1000:print]   eigenvalue_max_iter .......... 100
+[2024-05-14 08:10:21,670] [INFO] [config.py:1000:print]   eigenvalue_stability ......... 1e-06
+[2024-05-14 08:10:21,670] [INFO] [config.py:1000:print]   eigenvalue_tol ............... 0.01
+[2024-05-14 08:10:21,670] [INFO] [config.py:1000:print]   eigenvalue_verbose ........... False
+[2024-05-14 08:10:21,670] [INFO] [config.py:1000:print]   elasticity_enabled ........... False
+[2024-05-14 08:10:21,670] [INFO] [config.py:1000:print]   flops_profiler_config ........ {
+    "enabled": false, 
+    "recompute_fwd_factor": 0.0, 
+    "profile_step": 1, 
+    "module_depth": -1, 
+    "top_modules": 1, 
+    "detailed": true, 
+    "output_file": null
+}
+[2024-05-14 08:10:21,670] [INFO] [config.py:1000:print]   fp16_auto_cast ............... None
+[2024-05-14 08:10:21,670] [INFO] [config.py:1000:print]   fp16_enabled ................. False
+[2024-05-14 08:10:21,670] [INFO] [config.py:1000:print]   fp16_master_weights_and_gradients  False
+[2024-05-14 08:10:21,670] [INFO] [config.py:1000:print]   global_rank .................. 0
+[2024-05-14 08:10:21,670] [INFO] [config.py:1000:print]   grad_accum_dtype ............. None
+[2024-05-14 08:10:21,670] [INFO] [config.py:1000:print]   gradient_accumulation_steps .. 1
+[2024-05-14 08:10:21,670] [INFO] [config.py:1000:print]   gradient_clipping ............ 1.0
+[2024-05-14 08:10:21,670] [INFO] [config.py:1000:print]   gradient_predivide_factor .... 1.0
+[2024-05-14 08:10:21,670] [INFO] [config.py:1000:print]   graph_harvesting ............. False
+[2024-05-14 08:10:21,670] [INFO] [config.py:1000:print]   hybrid_engine ................ enabled=False max_out_tokens=512 inference_tp_size=1 release_inference_cache=False pin_parameters=True tp_gather_partition_size=8
+[2024-05-14 08:10:21,670] [INFO] [config.py:1000:print]   initial_dynamic_scale ........ 1
+[2024-05-14 08:10:21,670] [INFO] [config.py:1000:print]   load_universal_checkpoint .... False
+[2024-05-14 08:10:21,670] [INFO] [config.py:1000:print]   loss_scale ................... 1.0
+[2024-05-14 08:10:21,670] [INFO] [config.py:1000:print]   memory_breakdown ............. False
+[2024-05-14 08:10:21,670] [INFO] [config.py:1000:print]   mics_hierarchial_params_gather  False
+[2024-05-14 08:10:21,670] [INFO] [config.py:1000:print]   mics_shard_size .............. -1
+[2024-05-14 08:10:21,670] [INFO] [config.py:1000:print]   monitor_config ............... tensorboard=TensorBoardConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') wandb=WandbConfig(enabled=False, group=None, team=None, project='deepspeed') csv_monitor=CSVConfig(enabled=False, output_path='', job_name='DeepSpeedJobName') enabled=False
+[2024-05-14 08:10:21,670] [INFO] [config.py:1000:print]   nebula_config ................ {
+    "enabled": false, 
+    "persistent_storage_path": null, 
+    "persistent_time_interval": 100, 
+    "num_of_version_in_retention": 2, 
+    "enable_nebula_load": true, 
+    "load_path": null
+}
+[2024-05-14 08:10:21,671] [INFO] [config.py:1000:print]   optimizer_legacy_fusion ...... False
+[2024-05-14 08:10:21,671] [INFO] [config.py:1000:print]   optimizer_name ............... None
+[2024-05-14 08:10:21,671] [INFO] [config.py:1000:print]   optimizer_params ............. None
+[2024-05-14 08:10:21,671] [INFO] [config.py:1000:print]   pipeline ..................... {'stages': 'auto', 'partition': 'best', 'seed_layers': False, 'activation_checkpoint_interval': 0, 'pipe_partitioned': True, 'grad_partitioned': True}
+[2024-05-14 08:10:21,671] [INFO] [config.py:1000:print]   pld_enabled .................. False
+[2024-05-14 08:10:21,671] [INFO] [config.py:1000:print]   pld_params ................... False
+[2024-05-14 08:10:21,671] [INFO] [config.py:1000:print]   prescale_gradients ........... False
+[2024-05-14 08:10:21,671] [INFO] [config.py:1000:print]   scheduler_name ............... None
+[2024-05-14 08:10:21,671] [INFO] [config.py:1000:print]   scheduler_params ............. None
+[2024-05-14 08:10:21,671] [INFO] [config.py:1000:print]   seq_parallel_communication_data_type  torch.float32
+[2024-05-14 08:10:21,671] [INFO] [config.py:1000:print]   sparse_attention ............. None
+[2024-05-14 08:10:21,671] [INFO] [config.py:1000:print]   sparse_gradients_enabled ..... False
+[2024-05-14 08:10:21,671] [INFO] [config.py:1000:print]   steps_per_print .............. inf
+[2024-05-14 08:10:21,671] [INFO] [config.py:1000:print]   train_batch_size ............. 96
+[2024-05-14 08:10:21,671] [INFO] [config.py:1000:print]   train_micro_batch_size_per_gpu  12
+[2024-05-14 08:10:21,671] [INFO] [config.py:1000:print]   use_data_before_expert_parallel_  False
+[2024-05-14 08:10:21,671] [INFO] [config.py:1000:print]   use_node_local_storage ....... False
+[2024-05-14 08:10:21,671] [INFO] [config.py:1000:print]   wall_clock_breakdown ......... False
+[2024-05-14 08:10:21,671] [INFO] [config.py:1000:print]   weight_quantization_config ... None
+[2024-05-14 08:10:21,671] [INFO] [config.py:1000:print]   world_size ................... 8
+[2024-05-14 08:10:21,671] [INFO] [config.py:1000:print]   zero_allow_untested_optimizer  True
+[2024-05-14 08:10:21,671] [INFO] [config.py:1000:print]   zero_config .................. stage=3 contiguous_gradients=False reduce_scatter=True reduce_bucket_size=500,000,000 use_multi_rank_bucket_allreduce=True allgather_partitions=True allgather_bucket_size=500,000,000 overlap_comm=False load_from_fp32_weights=True elastic_checkpoint=False offload_param=DeepSpeedZeroOffloadParamConfig(device='none', nvme_path=None, buffer_count=5, buffer_size=100,000,000, max_in_cpu=1,000,000,000, pin_memory=False) offload_optimizer=DeepSpeedZeroOffloadOptimizerConfig(device='none', nvme_path=None, buffer_count=4, pin_memory=False, pipeline=False, pipeline_read=False, pipeline_write=False, fast_init=False, ratio=1.0) sub_group_size=1,000,000,000 cpu_offload_param=None cpu_offload_use_pin_memory=None cpu_offload=None prefetch_bucket_size=50,000,000 param_persistence_threshold=100,000 model_persistence_threshold=sys.maxsize max_live_parameters=1,000,000,000 max_reuse_distance=1,000,000,000 gather_16bit_weights_on_model_save=True stage3_gather_fp16_weights_on_model_save=False ignore_unused_parameters=True legacy_stage1=False round_robin_gradients=False zero_hpz_partition_size=1 zero_quantized_weights=False zero_quantized_nontrainable_weights=False zero_quantized_gradients=False mics_shard_size=-1 mics_hierarchical_params_gather=False memory_efficient_linear=True pipeline_loading_checkpoint=False override_module_apply=True
+[2024-05-14 08:10:21,671] [INFO] [config.py:1000:print]   zero_enabled ................. True
+[2024-05-14 08:10:21,671] [INFO] [config.py:1000:print]   zero_force_ds_cpu_optimizer .. True
+[2024-05-14 08:10:21,671] [INFO] [config.py:1000:print]   zero_optimization_stage ...... 3
+[2024-05-14 08:10:21,672] [INFO] [config.py:986:print_user_config]   json = {
+    "steps_per_print": inf, 
+    "train_batch_size": 96, 
+    "train_micro_batch_size_per_gpu": 12, 
+    "gradient_accumulation_steps": 1, 
+    "bf16": {
+        "enabled": true
+    }, 
+    "gradient_clipping": 1.0, 
+    "zero_optimization": {
+        "stage": 3, 
+        "overlap_comm": false, 
+        "contiguous_gradients": false, 
+        "stage3_gather_16bit_weights_on_model_save": true, 
+        "offload_optimizer": {
+            "device": "none"
+        }, 
+        "offload_param": {
+            "device": "none"
+        }
+    }, 
+    "fp16": {
+        "enabled": false
+    }, 
+    "zero_allow_untested_optimizer": true
+}
+{'loss': 1.335, 'grad_norm': 0.7947573690672076, 'learning_rate': 9.8989898989899e-05, 'epoch': 0.03}
+{'loss': 1.3344, 'grad_norm': 0.8252406054397116, 'learning_rate': 9.797979797979798e-05, 'epoch': 0.06}
+{'loss': 1.3048, 'grad_norm': 0.8754778644400139, 'learning_rate': 9.696969696969698e-05, 'epoch': 0.09}
+{'loss': 1.2972, 'grad_norm': 0.8579410460053123, 'learning_rate': 9.595959595959596e-05, 'epoch': 0.12}
+{'loss': 1.2661, 'grad_norm': 0.7392367005125202, 'learning_rate': 9.494949494949495e-05, 'epoch': 0.15}
+{'loss': 1.2442, 'grad_norm': 0.7679110813180299, 'learning_rate': 9.393939393939395e-05, 'epoch': 0.18}
+{'loss': 1.2395, 'grad_norm': 0.8631338271843267, 'learning_rate': 9.292929292929293e-05, 'epoch': 0.21}
+{'loss': 1.2174, 'grad_norm': 0.8949997148905311, 'learning_rate': 9.191919191919192e-05, 'epoch': 0.24}
+{'loss': 1.1914, 'grad_norm': 0.8014179235633301, 'learning_rate': 9.090909090909092e-05, 'epoch': 0.27}
+{'loss': 1.1935, 'grad_norm': 0.8618609871561087, 'learning_rate': 8.98989898989899e-05, 'epoch': 0.3}
+{'loss': 1.1818, 'grad_norm': 0.7830154435867939, 'learning_rate': 8.888888888888889e-05, 'epoch': 0.33}
+{'loss': 1.1651, 'grad_norm': 0.8861184469613159, 'learning_rate': 8.787878787878789e-05, 'epoch': 0.36}
+{'loss': 1.1781, 'grad_norm': 0.9855715723062133, 'learning_rate': 8.686868686868688e-05, 'epoch': 0.39}
+{'loss': 1.1655, 'grad_norm': 1.1462735545545404, 'learning_rate': 8.585858585858586e-05, 'epoch': 0.42}
+{'loss': 1.1422, 'grad_norm': 0.9657469080091424, 'learning_rate': 8.484848484848486e-05, 'epoch': 0.45}
+{'loss': 1.1309, 'grad_norm': 0.8344697180987588, 'learning_rate': 8.383838383838384e-05, 'epoch': 0.48}
+{'loss': 1.097, 'grad_norm': 0.7771445241252076, 'learning_rate': 8.282828282828283e-05, 'epoch': 0.52}
+{'loss': 1.0898, 'grad_norm': 0.6270441780708936, 'learning_rate': 8.181818181818183e-05, 'epoch': 0.55}
+{'loss': 1.0662, 'grad_norm': 0.558905023027211, 'learning_rate': 8.080808080808081e-05, 'epoch': 0.58}
+{'loss': 1.0566, 'grad_norm': 0.5562076761289676, 'learning_rate': 7.97979797979798e-05, 'epoch': 0.61}
+{'loss': 1.0507, 'grad_norm': 0.5138918380804389, 'learning_rate': 7.878787878787879e-05, 'epoch': 0.64}
+{'loss': 1.0402, 'grad_norm': 0.511980867850124, 'learning_rate': 7.777777777777778e-05, 'epoch': 0.67}
+{'loss': 1.0077, 'grad_norm': 0.46900749220660487, 'learning_rate': 7.676767676767676e-05, 'epoch': 0.7}
+{'loss': 1.0229, 'grad_norm': 0.42297970558147224, 'learning_rate': 7.575757575757576e-05, 'epoch': 0.73}
+{'loss': 1.0165, 'grad_norm': 0.3992471784796887, 'learning_rate': 7.474747474747475e-05, 'epoch': 0.76}
+{'loss': 1.0179, 'grad_norm': 0.3575059883288757, 'learning_rate': 7.373737373737373e-05, 'epoch': 0.79}
+{'loss': 0.9909, 'grad_norm': 0.34196677165443673, 'learning_rate': 7.272727272727273e-05, 'epoch': 0.82}
+{'loss': 0.9913, 'grad_norm': 0.30968094287984044, 'learning_rate': 7.171717171717171e-05, 'epoch': 0.85}
+{'loss': 0.9882, 'grad_norm': 0.3138171358213491, 'learning_rate': 7.07070707070707e-05, 'epoch': 0.88}
+{'loss': 0.9664, 'grad_norm': 0.274336213650041, 'learning_rate': 6.96969696969697e-05, 'epoch': 0.91}
+{'loss': 0.9867, 'grad_norm': 0.2659340019219473, 'learning_rate': 6.86868686868687e-05, 'epoch': 0.94}
+{'loss': 0.9752, 'grad_norm': 0.4853782059207445, 'learning_rate': 6.767676767676769e-05, 'epoch': 0.97}
+{'loss': 0.9585, 'grad_norm': 0.23347339697540037, 'learning_rate': 6.666666666666667e-05, 'epoch': 1.0}
+{'loss': 0.9555, 'grad_norm': 0.21719460372073585, 'learning_rate': 6.565656565656566e-05, 'epoch': 1.03}
+{'loss': 0.9723, 'grad_norm': 0.21124386884086946, 'learning_rate': 6.464646464646466e-05, 'epoch': 1.06}
+{'loss': 0.9661, 'grad_norm': 0.18968237209512345, 'learning_rate': 6.363636363636364e-05, 'epoch': 1.09}
+{'loss': 0.9571, 'grad_norm': 0.18669160058263023, 'learning_rate': 6.262626262626264e-05, 'epoch': 1.12}
+{'loss': 0.9765, 'grad_norm': 0.1741760625342814, 'learning_rate': 6.161616161616162e-05, 'epoch': 1.15}
+{'loss': 0.9632, 'grad_norm': 0.16903047974036217, 'learning_rate': 6.060606060606061e-05, 'epoch': 1.18}
+{'loss': 0.9471, 'grad_norm': 0.16409699305825748, 'learning_rate': 5.959595959595959e-05, 'epoch': 1.21}
+{'loss': 0.9493, 'grad_norm': 0.15669499801004597, 'learning_rate': 5.858585858585859e-05, 'epoch': 1.24}
+{'loss': 0.9556, 'grad_norm': 0.15200328429977603, 'learning_rate': 5.757575757575758e-05, 'epoch': 1.27}
+{'loss': 0.9537, 'grad_norm': 0.15532793274871495, 'learning_rate': 5.6565656565656563e-05, 'epoch': 1.3}
+{'loss': 0.9703, 'grad_norm': 0.1539379473918532, 'learning_rate': 5.555555555555556e-05, 'epoch': 1.33}
+{'loss': 0.9441, 'grad_norm': 0.14254237964952185, 'learning_rate': 5.4545454545454546e-05, 'epoch': 1.36}
+{'loss': 0.9558, 'grad_norm': 0.13338777275534866, 'learning_rate': 5.353535353535354e-05, 'epoch': 1.39}
+{'loss': 0.9448, 'grad_norm': 0.13054008885109675, 'learning_rate': 5.2525252525252536e-05, 'epoch': 1.42}
+{'loss': 0.9397, 'grad_norm': 0.1367950816306048, 'learning_rate': 5.151515151515152e-05, 'epoch': 1.45}
+{'loss': 0.9409, 'grad_norm': 0.12844432685708584, 'learning_rate': 5.050505050505051e-05, 'epoch': 1.48}
+{'loss': 0.9447, 'grad_norm': 0.1383592101653977, 'learning_rate': 4.94949494949495e-05, 'epoch': 1.52}
+{'loss': 0.9427, 'grad_norm': 0.13268408080719707, 'learning_rate': 4.848484848484849e-05, 'epoch': 1.55}
+{'loss': 0.9604, 'grad_norm': 0.12787036169998084, 'learning_rate': 4.7474747474747476e-05, 'epoch': 1.58}
+{'loss': 0.9312, 'grad_norm': 0.12762959086835413, 'learning_rate': 4.6464646464646464e-05, 'epoch': 1.61}
+{'loss': 0.936, 'grad_norm': 0.1189348675017062, 'learning_rate': 4.545454545454546e-05, 'epoch': 1.64}
+{'loss': 0.9392, 'grad_norm': 0.11811077518772417, 'learning_rate': 4.4444444444444447e-05, 'epoch': 1.67}
+{'loss': 0.9352, 'grad_norm': 0.12761377529665327, 'learning_rate': 4.343434343434344e-05, 'epoch': 1.7}
+{'loss': 0.9534, 'grad_norm': 0.11754145735126101, 'learning_rate': 4.242424242424243e-05, 'epoch': 1.73}
+{'loss': 0.9252, 'grad_norm': 0.11466766568891423, 'learning_rate': 4.141414141414142e-05, 'epoch': 1.76}
+{'loss': 0.9403, 'grad_norm': 0.1140979472605174, 'learning_rate': 4.0404040404040405e-05, 'epoch': 1.79}
+{'loss': 0.9319, 'grad_norm': 0.11364892900478532, 'learning_rate': 3.939393939393939e-05, 'epoch': 1.82}
+{'loss': 0.9435, 'grad_norm': 0.12505891964405746, 'learning_rate': 3.838383838383838e-05, 'epoch': 1.85}
+{'loss': 0.9321, 'grad_norm': 0.11411784499509213, 'learning_rate': 3.7373737373737376e-05, 'epoch': 1.88}
+{'loss': 0.9427, 'grad_norm': 0.11579923160634199, 'learning_rate': 3.6363636363636364e-05, 'epoch': 1.91}
+{'loss': 0.9281, 'grad_norm': 0.11433110679861203, 'learning_rate': 3.535353535353535e-05, 'epoch': 1.94}
+{'loss': 0.9269, 'grad_norm': 0.10786228506113746, 'learning_rate': 3.434343434343435e-05, 'epoch': 1.97}
+{'loss': 0.9223, 'grad_norm': 0.10788927243748869, 'learning_rate': 3.3333333333333335e-05, 'epoch': 2.0}
+{'loss': 0.9142, 'grad_norm': 0.11159623706204136, 'learning_rate': 3.232323232323233e-05, 'epoch': 2.03}
+{'loss': 0.9287, 'grad_norm': 0.10623621654738666, 'learning_rate': 3.131313131313132e-05, 'epoch': 2.06}
+{'loss': 0.9261, 'grad_norm': 0.12188330801582029, 'learning_rate': 3.0303030303030306e-05, 'epoch': 2.09}
+{'loss': 0.9291, 'grad_norm': 0.10444294839795054, 'learning_rate': 2.9292929292929294e-05, 'epoch': 2.12}
+{'loss': 0.9127, 'grad_norm': 0.10506378046168179, 'learning_rate': 2.8282828282828282e-05, 'epoch': 2.15}
+{'loss': 0.9385, 'grad_norm': 0.10053930270493164, 'learning_rate': 2.7272727272727273e-05, 'epoch': 2.18}
+{'loss': 0.9275, 'grad_norm': 0.10839892153512251, 'learning_rate': 2.6262626262626268e-05, 'epoch': 2.21}
+{'loss': 0.9426, 'grad_norm': 0.10106305470638415, 'learning_rate': 2.5252525252525256e-05, 'epoch': 2.24}
+{'loss': 0.9252, 'grad_norm': 0.1006260425062621, 'learning_rate': 2.4242424242424244e-05, 'epoch': 2.27}
+{'loss': 0.9529, 'grad_norm': 0.10826746003591983, 'learning_rate': 2.3232323232323232e-05, 'epoch': 2.3}
+{'loss': 0.9277, 'grad_norm': 0.10435205078984323, 'learning_rate': 2.2222222222222223e-05, 'epoch': 2.33}
+{'loss': 0.9381, 'grad_norm': 0.10278728244353694, 'learning_rate': 2.1212121212121215e-05, 'epoch': 2.36}
+{'loss': 0.9418, 'grad_norm': 0.10537940255868765, 'learning_rate': 2.0202020202020203e-05, 'epoch': 2.39}
+{'loss': 0.9263, 'grad_norm': 0.09783748593952449, 'learning_rate': 1.919191919191919e-05, 'epoch': 2.42}
+{'loss': 0.9423, 'grad_norm': 0.10232497961313261, 'learning_rate': 1.8181818181818182e-05, 'epoch': 2.45}
+{'loss': 0.9228, 'grad_norm': 0.09971217594804348, 'learning_rate': 1.7171717171717173e-05, 'epoch': 2.48}
+{'loss': 0.9048, 'grad_norm': 0.10228014041665494, 'learning_rate': 1.6161616161616165e-05, 'epoch': 2.52}
+{'loss': 0.9135, 'grad_norm': 0.10011365609630707, 'learning_rate': 1.5151515151515153e-05, 'epoch': 2.55}
+{'loss': 0.927, 'grad_norm': 0.1003840825170792, 'learning_rate': 1.4141414141414141e-05, 'epoch': 2.58}
+{'loss': 0.9256, 'grad_norm': 0.09740419763556052, 'learning_rate': 1.3131313131313134e-05, 'epoch': 2.61}
+{'loss': 0.9262, 'grad_norm': 0.10787931309015374, 'learning_rate': 1.2121212121212122e-05, 'epoch': 2.64}
+{'loss': 0.9325, 'grad_norm': 0.105515803427718, 'learning_rate': 1.1111111111111112e-05, 'epoch': 2.67}
+{'loss': 0.9198, 'grad_norm': 0.10148230739119812, 'learning_rate': 1.0101010101010101e-05, 'epoch': 2.7}
+{'loss': 0.9226, 'grad_norm': 0.10021338120139843, 'learning_rate': 9.090909090909091e-06, 'epoch': 2.73}
+{'loss': 0.9101, 'grad_norm': 0.10051817925231726, 'learning_rate': 8.080808080808082e-06, 'epoch': 2.76}
+{'loss': 0.9281, 'grad_norm': 0.0984852783685473, 'learning_rate': 7.0707070707070704e-06, 'epoch': 2.79}
+{'loss': 0.9199, 'grad_norm': 0.09536231696039597, 'learning_rate': 6.060606060606061e-06, 'epoch': 2.82}
+{'loss': 0.9262, 'grad_norm': 0.09409839786624777, 'learning_rate': 5.050505050505051e-06, 'epoch': 2.85}
+{'loss': 0.9312, 'grad_norm': 0.09480971803852459, 'learning_rate': 4.040404040404041e-06, 'epoch': 2.88}
+{'loss': 0.9484, 'grad_norm': 0.09608203037083761, 'learning_rate': 3.0303030303030305e-06, 'epoch': 2.91}
+{'loss': 0.9053, 'grad_norm': 0.0961979126330561, 'learning_rate': 2.0202020202020206e-06, 'epoch': 2.94}
+{'loss': 0.9522, 'grad_norm': 0.09197707052820031, 'learning_rate': 1.0101010101010103e-06, 'epoch': 2.97}
+{'loss': 0.9053, 'grad_norm': 0.09632258215975371, 'learning_rate': 0.0, 'epoch': 3.0}
+{'train_runtime': 555.9115, 'train_samples_per_second': 16.594, 'train_steps_per_second': 0.178, 'train_loss': 0.9973015863486011, 'epoch': 3.0}
+***** train metrics *****
+  epoch                    =        3.0
+  total_flos               =   328333GF
+  train_loss               =     0.9973
+  train_runtime            = 0:09:15.91
+  train_samples_per_second =     16.594
+  train_steps_per_second   =      0.178
+[93m [WARNING] [0m async_io requires the dev libaio .so object and headers but these were not found.
+[93m [WARNING] [0m async_io: please install the libaio-dev package with apt
+[93m [WARNING] [0m If libaio is already installed (perhaps from source), try setting the CFLAGS and LDFLAGS environment variables to where it can be found.
+[93m [WARNING] [0m Please specify the CUTLASS repo directory as environment variable $CUTLASS_PATH
+[93m [WARNING] [0m sparse_attn requires a torch version >= 1.5 and < 2.0 but detected 2.3
+[93m [WARNING] [0m using untested triton version (3.0.0), only 1.0.0 is known to be compatible
