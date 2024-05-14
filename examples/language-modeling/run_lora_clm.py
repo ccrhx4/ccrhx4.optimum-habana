@@ -183,13 +183,29 @@ class ModelArguments:
                 )
             },
     )
-    load_4_bits: bool = field(
+    use_4bit_quantization: Optional[bool] = field(
         default=False,
-        metadata={
-            "help": (
-                "It is an option to load the model in 4 bits."
-            )
-        },
+        metadata={"help": "Enables loading model in 4bit."},
+    )
+    use_nested_quant: Optional[bool] = field(
+        default=False,
+        metadata={"help": "Activate nested quantization for 4bit base models"},
+    )
+    bnb_4bit_compute_dtype: Optional[str] = field(
+        default="float16",
+        metadata={"help": "Compute dtype for 4bit base models"},
+    )
+    bnb_4bit_quant_storage_dtype: Optional[str] = field(
+        default="uint8",
+        metadata={"help": "Quantization storage dtype for 4bit base models"},
+    )
+    bnb_4bit_quant_type: Optional[str] = field(
+        default="nf4",
+        metadata={"help": "Quantization type fp4 or nf4"},
+    )
+    use_reentrant: Optional[bool] = field(
+        default=False,
+        metadata={"help": "Gradient Checkpointing param. Refer the related docs"},
     )
 
 @dataclass
@@ -587,30 +603,36 @@ def main():
         raise ValueError("Unsupported dataset")
     # Load model
     if model_args.model_name_or_path:
-        if model_args.load_4_bits is True and use_cuda is True:
+        #TODO
+        quant_storage_dtype = getattr(torch, model_args.bnb_4bit_quant_storage_dtype)
+        if use_cuda is True:
             nf4_config = BitsAndBytesConfig(
             load_in_4bit=True,
             bnb_4bit_quant_type="nf4",
             bnb_4bit_use_double_quant=True,
-            bnb_4bit_compute_dtype=torch.bfloat16)
-            device_map = torch.cuda.current_device()
+            bnb_4bit_compute_dtype=torch.bfloat16,
+            bnb_4bit_quant_storage=quant_storage_dtype)
+            device_map="auto"
+            #device_map = torch.cuda.current_device()
         else:
             nf4_config = None
             device_map=training_args.device.type if model_args.load_meta_device else None
 
         model_dtype = torch.bfloat16 if training_args.bf16 else None
+
+        torch_dtype = (
+            quant_storage_dtype if quant_storage_dtype and quant_storage_dtype.is_floating_point else torch.float32
+        )
+
         model = AutoModelForCausalLM.from_pretrained(
             model_args.model_name_or_path,
-            from_tf=bool(".ckpt" in model_args.model_name_or_path),
             config=config,
             quantization_config=nf4_config,
             cache_dir=model_args.cache_dir,
             revision=model_args.model_revision,
             use_auth_token=True if model_args.use_auth_token else None,
             trust_remote_code=True if model_args.trust_remote_code else None,
-            torch_dtype=model_dtype,
-            low_cpu_mem_usage=model_args.low_cpu_mem_usage,
-            device_map=device_map,
+            torch_dtype=torch_dtype,
             token=model_args.token,
         )
     else:
@@ -816,6 +838,9 @@ def main():
             )
 
         if use_cuda is True:
+            if training_args.gradient_checkpointing:
+                training_args.gradient_checkpointing_kwargs = {"use_reentrant": model_args.use_reentrant}
+
             trainer = Trainer(
                 model=lora_model,
                 args=training_args,
