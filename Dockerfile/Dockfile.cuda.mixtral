@@ -1,0 +1,17 @@
+# Copyright (c) 2020-2021 Intel Corporation.
+# SPDX-License-Identifier: BSD-3-Clause
+
+FROM nvcr.io/nvidia/pytorch:24.04-py3
+
+SHELL ["/bin/bash", "-c"] 
+
+ENV https_proxy=http://proxy-dmz.intel.com:912
+ENV http_proxy=http://proxy-dmz.intel.com:911
+ENV no_proxy=ubit-artifactory-sh.intel.com
+
+RUN DEBIAN_FRONTEND=noninteractive apt update
+
+RUN pip install git+https://github.com/huggingface/peft
+RUN git clone -b cuda_mixtral https://github.com/ccrhx4/ccrhx4.optimum-habana
+
+RUN pip install evaluate bitsandbytes deepspeed
