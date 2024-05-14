@@ -133,6 +133,10 @@ class ModelArguments:
                 "Whether to run attention softmax layer in bf16 precision for fine-tuning. The current support is limited to Llama only."
             )
         },
+    ) 
+    use_flash_attn: Optional[bool] = field(
+        default=False,
+        metadata={"help": "Enables Flash attention for training."},
     )
     use_flash_attention: bool = field(
         default=False,
@@ -623,6 +627,8 @@ def main():
         torch_dtype = (
             quant_storage_dtype if quant_storage_dtype and quant_storage_dtype.is_floating_point else torch.float32
         )
+
+        print(config)
 
         model = AutoModelForCausalLM.from_pretrained(
             model_args.model_name_or_path,

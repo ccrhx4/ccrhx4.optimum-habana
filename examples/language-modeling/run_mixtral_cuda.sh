@@ -25,6 +25,7 @@ accelerate launch --config_file "deepspeed_config_z3_qlora.yaml" run_lora_clm.py
 	--lora_target_modules q_proj v_proj \
      	--lora_rank 4 \
 	--use_cache False \
+	--use_flash_attn True \
 	--use_4bit_quantization True \
         --use_nested_quant True \
         --bnb_4bit_compute_dtype "bfloat16" \
