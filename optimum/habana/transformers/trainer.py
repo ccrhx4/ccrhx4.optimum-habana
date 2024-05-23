@@ -1029,6 +1029,9 @@ class GaudiTrainer(Trainer):
                 break
 
         hb_profiler.stop()
+        import deepspeed.comm
+
+        deepspeed.comm.log_summary()
 
         if args.past_index and hasattr(self, "_past"):
             # Clean the state at the end of training
