@@ -8,11 +8,11 @@ python  run_lora_clm.py \
 	--bf16 True \
 	--dataset_name tatsu-lab/alpaca \
 	--dataset_concatenation \
-	--per_device_train_batch_size 12 \
+	--per_device_train_batch_size 24 \
     	--per_device_eval_batch_size 8 \
     	--gradient_accumulation_steps 1 \
+	--max_seq_length 1024 \
 	--gradient_checkpointing \
-	--max_seq_length 2048 \
     	--do_train \
      	--learning_rate 1e-4 \
    	--num_train_epochs 3 \
@@ -31,8 +31,10 @@ python  run_lora_clm.py \
 	--use_lazy_mode \
 	--use_habana \
 	--use_cache False \
+	--use_hpu_graphs_for_training \
 	--num_hidden_layers 5 \
-	--profiling_steps 1 \
+	--dataloader_num_workers 1 \
+	--profiling_steps 0 \
 	--profiling_record_shapes False \
 	--profiling_warmup_steps 5
 

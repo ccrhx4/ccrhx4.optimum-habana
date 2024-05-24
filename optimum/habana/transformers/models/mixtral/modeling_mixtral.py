@@ -367,17 +367,12 @@ def gaudi_mixtral_block_sparse_moe_forward(self, hidden_states: torch.Tensor) ->
     # router_logits: (batch * sequence_length, n_experts)
     router_logits = self.gate(hidden_states)
 
-    if is_deepspeed_available() and (not self.training):
-        from deepspeed import comm as dist
-
-        if dist.is_initialized():
-            output_tensors = [router_logits.clone() for _ in range(dist.get_world_size())]
-            dist.all_gather(output_tensors, router_logits)
-            router_logits = torch.cat(output_tensors, dim=1)
+    htcore.mark_step()
 
     routing_weights = F.softmax(router_logits, dim=1, dtype=torch.float)
     routing_weights, selected_experts = torch.topk(routing_weights, self.top_k, dim=-1)
     routing_weights /= routing_weights.sum(dim=-1, keepdim=True)
+    
     # we cast back to the input dtype
     routing_weights = routing_weights.to(hidden_states.dtype)
 
@@ -394,6 +389,8 @@ def gaudi_mixtral_block_sparse_moe_forward(self, hidden_states: torch.Tensor) ->
 
     # Loop over all available experts in the model and perform the computation on each expert
     for expert_idx in range(self.num_experts):
+        htcore.mark_step()
+
         expert_layer = self.experts[expert_idx]
         padded_weight = padded_weights[expert_idx]
         current_state_static = hidden_states.reshape(-1, hidden_dim)
@@ -401,6 +398,8 @@ def gaudi_mixtral_block_sparse_moe_forward(self, hidden_states: torch.Tensor) ->
             expert_layer(current_state_static).reshape(-1, sequence_length, hidden_dim) * padded_weight
         )
         final_hidden_states += current_hidden_states_static
+        htcore.mark_step()
+
 
     return final_hidden_states, router_logits
 
